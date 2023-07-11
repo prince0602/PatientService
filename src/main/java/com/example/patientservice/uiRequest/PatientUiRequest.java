@@ -2,16 +2,33 @@ package com.example.patientservice.uiRequest;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class PatientUiRequest {
-
+    private Long id;
     private String name;
     private String email;
     private String phone;
     private String insuranceProvider;
     private String policyNumber;
     private String gender;
+    private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
 
+    public List<MedicalHistoryUiRequest> getMedicalHistory() {
+        return medicalHistoryUiRequests;
+    }
+
+    public void setMedicalHistory(List<MedicalHistoryUiRequest> medicalHistoryUiRequests) {
+        this.medicalHistoryUiRequests = medicalHistoryUiRequests;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -59,4 +76,5 @@ public class PatientUiRequest {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
 }

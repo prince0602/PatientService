@@ -17,9 +17,10 @@ public class Patient {
     private String insuranceProvider;
     private String policyNumber;
     private  String gender;
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "patient_id", referencedColumnName = "id")
-    //private List<MedicalHistory> medicalHistory;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id", referencedColumnName = "id")
+    private List<MedicalHistory> medicalHistory;
     public String getGender() {
         return gender;
     }
