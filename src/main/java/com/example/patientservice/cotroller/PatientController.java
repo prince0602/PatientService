@@ -15,15 +15,11 @@ public class PatientController {
     PatientBl bl;
 
 
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public ResponseEntity<String> createPatient(@PathVariable(value = "patientId", required = false) Long patientId, @RequestBody PatientUiRequest patientUiRequest){
-            if(patientId==null) return ResponseEntity.ok(bl.createPatient(patientUiRequest));
-            else{
-                return bl.updatePatientDetails(patientId,patientUiRequest);
-            }
-
-
-    }
+    @PostMapping("/createPatient")
+    public String createPatient(@RequestBody PatientUiRequest patientUiRequest){
+            return bl.createPatient(patientUiRequest);
+    } 
+    
     @GetMapping("/getPatientDetails/{patientId}")
 
     public PatientUIResponse getPatientDetails(@PathVariable int patientId){

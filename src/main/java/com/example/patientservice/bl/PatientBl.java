@@ -33,18 +33,17 @@ import java.util.Optional;
             //return null;
         }
 
-        public ResponseEntity<String> updatePatientDetails(@PathVariable("patientId") Long patientId, @RequestBody PatientUiRequest updatedPatient) {
-            Optional<Patient> optionalPatient=patientRepo.findById(Math.toIntExact(patientId));
-            if(optionalPatient.isPresent()){
-                Patient patient=optionalPatient.get();
-                patient.setPhone(updatedPatient.getPhone());
-                patient.setEmail(updatedPatient.getEmail());
-                patientRepo.save(patient);
-                return ResponseEntity.ok("Patient details updated successfully");
-            }
-            else{
-                return ResponseEntity.notFound().build();
-            }
+		/*
+		 * public ResponseEntity<String> updatePatientDetails(@PathVariable("patientId")
+		 * Long patientId, @RequestBody PatientUiRequest updatedPatient) {
+		 * Optional<Patient>
+		 * optionalPatient=patientRepo.findById(Math.toIntExact(patientId));
+		 * if(optionalPatient.isPresent()){ Patient patient=optionalPatient.get();
+		 * //patient.setPhone(updatedPatient.getPhone());
+		 * patient.setEmail(updatedPatient.getEmail()); patientRepo.save(patient);
+		 * return ResponseEntity.ok("Patient details updated successfully"); } else{
+		 * return ResponseEntity.notFound().build(); }
+		 */
         }
 
         public PatientUIResponse getPatientDetails(int patientId) {

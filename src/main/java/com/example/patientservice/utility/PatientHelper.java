@@ -14,23 +14,41 @@ public class PatientHelper {
     public static Patient convertPatientRequest(PatientUiRequest req) {
         Patient p = new Patient();
 
-        // p.setEmail(req.getEmail());
-        p.setName(req.getName());
-        p.setPhone(req.getPhone());
-        p.setEmail(req.getEmail());
-        p.setPolicyNumber(req.getPolicyNumber());
-        p.setInsuranceProvider(req.getInsuranceProvider());
-        p.setGender(req.getGender());
+        
+        p.setAccountNo( req.getAccountNo());
+        p.setAddressLine1(req.getAddressLine1());
+        req.getAddressLine2();
+        req.getCellPhone();
+        req.getCity();
+        req.getCountry();
+        req.getDateOfBirth();
+        req.getCounty();
+        req.getEmail();
+        req.getExtension();
+        p.setFirstName(req.getFirstName());
+        req.getLastName();
+        req.getHomePhone();
+        req.getMiddleInitial();
+        req.getPreferredName();
+        req.getSex();
+        req.getSsn();
+        req.getState();
+        req.getZip();
+        req.getWorkPhone();
+        req.getSuffix();
+        req.getPreviousName();
+        
+        
+        
+        
+        
         List<MedicalHistory> medicalHistories=new ArrayList<MedicalHistory>();
         List<MedicalHistoryUiRequest> medicalHistoryUiRequests=req.getMedicalHistory();
         for(MedicalHistoryUiRequest mReq:medicalHistoryUiRequests){
             MedicalHistory mh=new MedicalHistory();
-            mh.setDate(mReq.getDate());
-            mh.setCondition(mReq.getCondition());
-            mh.setTreatment(mReq.getTreatment());
-            medicalHistories.add(mh);
+            mreq.g
         }
-        p.setMedicalHistory(medicalHistories);
+        //p.setMedicalHistory(medicalHistories);
 
 
         return p;
