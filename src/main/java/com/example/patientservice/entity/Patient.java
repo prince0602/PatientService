@@ -3,8 +3,6 @@ package com.example.patientservice.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.example.patientservice.uiRequest.MedicalHistoryUiRequest;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
