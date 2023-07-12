@@ -1,21 +1,16 @@
-package com.example.patientservice.uiRequest;
+package com.example.patientservice.uiResponse;
 
 import java.time.LocalDate;
 
-public class MedicalHistoryUiRequest {
+public class MedicalHistoryUiResponse {
 
+	
 	private String diagnosis;
 	private String symptoms;
 	private String medication;
 	private String doctorName;
 	private LocalDate appointmentDate;
 	private String additionalComments;
-	public String getAdditionalComments() {
-		return additionalComments;
-	}
-	public void setAdditionalComments(String additionalComments) {
-		this.additionalComments = additionalComments;
-	}
 	public String getDiagnosis() {
 		return diagnosis;
 	}
@@ -45,5 +40,11 @@ public class MedicalHistoryUiRequest {
 	}
 	public void setAppointmentDate(LocalDate appointmentDate) {
 		this.appointmentDate = appointmentDate;
+	}
+	public String getAdditionalComments() {
+		return additionalComments;
+	}
+	public void setAdditionalComments(String additionalComments) {
+		this.additionalComments = additionalComments;
 	}
 }

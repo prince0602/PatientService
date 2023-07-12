@@ -1,8 +1,11 @@
 package com.example.patientservice.uiResponse;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
+import com.example.patientservice.entity.MedicalHistory;
 
 @Component
 public class PatientUIResponse {
@@ -30,8 +33,17 @@ public class PatientUIResponse {
     private LocalDate dateOfBirth;
     private String sex;
     private String ssn;
+    private List<MedicalHistoryUiResponse> listOfMedicalHistory;
 
-    public Long getId() {
+    public List<MedicalHistoryUiResponse> getListOfMedicalHistory() {
+		return listOfMedicalHistory;
+	}
+
+	public void setListOfMedicalHistory(List<MedicalHistoryUiResponse> listOfMedicalHistory) {
+		this.listOfMedicalHistory = listOfMedicalHistory;
+	}
+
+	public Long getId() {
         return id;
     }
 
