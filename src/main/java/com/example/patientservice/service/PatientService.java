@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PatientService {
-@Autowired
+    @Autowired
     PatientRepo patientRepo;
 
-    public String createPatient(Patient patient){
+    public Long createPatient(Patient patient){
         Patient p=patientRepo.save(patient);
         if(p==null){
-            return "failure";
+            return null;
         }
         else{
-            return "success";
+            return p.getId();
         }
     }
 

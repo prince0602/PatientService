@@ -20,10 +20,12 @@ import org.springframework.stereotype.Component;
     @Autowired
     PatientService service;
 
-    public String createPatient(PatientUiRequest req)
+    public Long createPatient(PatientUiRequest req)
         {
+            System.out.println("test");
             Patient p = PatientHelper.convertPatientRequest(req);
-            return service.createPatient(p);
+            Long patId=service.createPatient(p);
+            return patId;
             //return null;
         }
 
