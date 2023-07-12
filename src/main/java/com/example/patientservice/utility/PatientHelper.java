@@ -17,38 +17,39 @@ public class PatientHelper {
         
         p.setAccountNo( req.getAccountNo());
         p.setAddressLine1(req.getAddressLine1());
-        req.getAddressLine2();
-        req.getCellPhone();
-        req.getCity();
-        req.getCountry();
-        req.getDateOfBirth();
-        req.getCounty();
-        req.getEmail();
-        req.getExtension();
+        p.setAddressLine2(req.getAddressLine2());
+        p.setCellPhone(req.getCellPhone());
+        p.setCity(req.getCity());
+        p.setCountry(req.getCountry());
+        p.setDateOfBirth(req.getDateOfBirth());
+        p.setCounty(req.getCounty());
+        p.setEmail(req.getEmail());
+        p.setExtension(req.getExtension());
         p.setFirstName(req.getFirstName());
-        req.getLastName();
-        req.getHomePhone();
-        req.getMiddleInitial();
-        req.getPreferredName();
-        req.getSex();
-        req.getSsn();
-        req.getState();
-        req.getZip();
-        req.getWorkPhone();
-        req.getSuffix();
-        req.getPreviousName();
-        
-        
-        
-        
-        
+        p.setLastName(req.getLastName());
+        p.setHomePhone(req.getHomePhone());
+        p.setMiddleInitial(req.getMiddleInitial());
+        p.setPreferredName(req.getPreferredName());
+        p.setSex(req.getSex());
+        p.setSsn(req.getSsn());
+        p.setState(req.getState());
+        p.setZip(req.getZip());
+        p.setWorkPhone(req.getWorkPhone());
+        p.setSuffix(req.getSuffix());
+        p.setPreviousName(req.getPreviousName());
+
         List<MedicalHistory> medicalHistories=new ArrayList<MedicalHistory>();
         List<MedicalHistoryUiRequest> medicalHistoryUiRequests=req.getMedicalHistory();
-        for(MedicalHistoryUiRequest mReq:medicalHistoryUiRequests){
-            MedicalHistory mh=new MedicalHistory();
-            mreq.g
-        }
-        //p.setMedicalHistory(medicalHistories);
+//        for(MedicalHistoryUiRequest mReq:medicalHistoryUiRequests){
+//            MedicalHistory mh=new MedicalHistory();
+//            mh.setDiagnosis(mReq.getDiagnosis());
+//            mh.setSymptoms(mReq.getSymptoms());
+//            mh.setMedication(mReq.getMedication());
+//            mh.setAppointmentDate(mReq.getAppointmentDate());
+//            mh.setDoctorName(mReq.getDoctorName());
+//            medicalHistories.add(mh);
+//        }
+        p.setMedicalHistory(medicalHistories);
 
 
         return p;
@@ -59,11 +60,26 @@ public class PatientHelper {
 
         uiResponse.setEmail(p.getEmail());
         uiResponse.setId( p.getId());
-        uiResponse.setGender(p.getGender());
-        uiResponse.setName(p.getName());
-        uiResponse.setPhone(p.getPhone());
-        uiResponse.setInsuranceProvider(p.getInsuranceProvider());
-        uiResponse.setPolicyNumber(p.getPolicyNumber());
+        uiResponse.setCity(p.getCity());
+        uiResponse.setZip(p.getZip());
+        uiResponse.setSex(p.getSex());
+        uiResponse.setSsn(p.getSsn());
+        uiResponse.setAccountNo(p.getAccountNo());
+        uiResponse.setAddressLine1(p.getAddressLine1());
+        uiResponse.setAddressLine2(p.getAddressLine2());
+        uiResponse.setCounty(p.getCounty());
+        uiResponse.setCountry(p.getCountry());
+        uiResponse.setCellPhone(p.getCellPhone());
+        uiResponse.setHomePhone(p.getHomePhone());
+        uiResponse.setWorkPhone(p.getWorkPhone());
+        uiResponse.setExtension(p.getExtension());
+        uiResponse.setFirstName(p.getFirstName());
+        uiResponse.setMiddleInitial(p.getMiddleInitial());
+        uiResponse.setLastName(p.getLastName());
+        uiResponse.setPreferredName(p.getPreferredName());
+        uiResponse.setPreviousName(p.getPreviousName());
+        uiResponse.setPrefix(p.getPrefix());
+        uiResponse.setSuffix(p.getSuffix());
         return uiResponse;
     }
 }

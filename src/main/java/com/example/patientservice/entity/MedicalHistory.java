@@ -14,6 +14,9 @@ public class MedicalHistory {
     private int id;
     private String diagnosis;
     private String symptoms;
+	private String medication;
+	private String doctorName;
+	private LocalDate appointmentDate;
     public int getId() {
 		return id;
 	}
@@ -50,7 +53,5 @@ public class MedicalHistory {
 	public void setAppointmentDate(LocalDate appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
-	private String medication;
-    private String doctorName;
-    private LocalDate appointmentDate;
+
 }

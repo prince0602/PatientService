@@ -43,7 +43,7 @@ public class Patient {
 	private LocalDate dateOfBirth;
 	private String sex;
 	private String ssn;
-	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
+
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_id", referencedColumnName = "id")
@@ -225,13 +225,7 @@ public class Patient {
 		this.ssn = ssn;
 	}
 
-	public List<MedicalHistoryUiRequest> getMedicalHistoryUiRequests() {
-		return medicalHistoryUiRequests;
-	}
 
-	public void setMedicalHistoryUiRequests(List<MedicalHistoryUiRequest> medicalHistoryUiRequests) {
-		this.medicalHistoryUiRequests = medicalHistoryUiRequests;
-	}
 
 	public List<MedicalHistory> getMedicalHistory() {
 		return medicalHistory;

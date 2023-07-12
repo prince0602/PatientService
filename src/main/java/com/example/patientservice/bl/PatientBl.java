@@ -7,13 +7,7 @@ import com.example.patientservice.uiRequest.PatientUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
 import com.example.patientservice.utility.PatientHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.Optional;
 
 
 @Component
@@ -44,7 +38,7 @@ import java.util.Optional;
 		 * return ResponseEntity.ok("Patient details updated successfully"); } else{
 		 * return ResponseEntity.notFound().build(); }
 		 */
-        }
+
 
         public PatientUIResponse getPatientDetails(int patientId) {
            Patient p=service.getPatientDetails(patientId);
