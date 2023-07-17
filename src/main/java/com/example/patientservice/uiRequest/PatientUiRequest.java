@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.NotNull;
+
 @Component
 public class PatientUiRequest {
 	private int accountNo;

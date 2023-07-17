@@ -95,4 +95,17 @@ public class PatientHelper {
 		uiResponse.setListOfMedicalHistory(medicalHistoryUiRespone);
 		return uiResponse;
 	}
+
+	public static List<PatientUIResponse> convertToPatientListUiResponse(List<Patient> listOfPatients) {
+		// TODO Auto-generated method stub
+		List<PatientUIResponse> listOfPatientUiResponse= new ArrayList<PatientUIResponse>();
+		for(Patient p:listOfPatients)
+		{
+			PatientUIResponse patientUIResponse=convertToPatientUiRequest(p);
+			listOfPatientUiResponse.add(patientUIResponse);
+			
+		}
+	
+		return listOfPatientUiResponse;
+	}
 }

@@ -2,6 +2,9 @@ package com.example.patientservice.service;
 
 import com.example.patientservice.entity.Patient;
 import com.example.patientservice.repository.PatientRepo;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +30,10 @@ public class PatientService {
         }
         return null;
     }
+
+	public List<Patient> getAllPatients() {
+		// TODO Auto-generated method stub
+		return patientRepo.findAll();
+		
+	}
 }

@@ -1,5 +1,7 @@
 package com.example.patientservice.bl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,6 +45,13 @@ import com.example.patientservice.utility.PatientHelper;
             PatientUIResponse response=PatientHelper.convertToPatientUiRequest(p);
             return response;
         }
+
+		public List<PatientUIResponse> getAllPatients() {
+			// TODO Auto-generated method stub
+			List<Patient> patients =service.getAllPatients();
+			List<PatientUIResponse> listOfPatients=PatientHelper.convertToPatientListUiResponse(patients);
+			return listOfPatients;
+		}
 
 
     }
