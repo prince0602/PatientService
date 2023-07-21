@@ -87,13 +87,15 @@ public class PatientHelper {
 		uiResponse.setPrefix(p.getPrefix());
 		uiResponse.setSuffix(p.getSuffix());
 		uiResponse.setReleaseOfInfo(p.getReleaseOfInfo());
-
+		uiResponse.setState(p.getState());
+		
+		uiResponse.setDateOfBirth(p.getDateOfBirth());
 		uiResponse.setPrimaryPhoneNumber(p.getPrimaryPhoneNumber());
 		uiResponse.setSecondaryPhoneNumber(p.getSecondaryPhoneNumber());
 		uiResponse.setPcg(p.getPcg());
 		uiResponse.setPcp(p.getPcp());
-		uiResponse.setLanguage(p.getGender());
-		uiResponse.setEthnicity(p.getGender());
+		uiResponse.setLanguage(p.getLanguage());
+		uiResponse.setEthnicity(p.getEthnicity());
 		uiResponse.setPrescriptionHistoryConsent(p.getPrescriptionHistoryConsent());
 		uiResponse.setEmpStatus(p.getEmpStatus());
 		uiResponse.setMaritalStatus(p.getMaritalStatus());

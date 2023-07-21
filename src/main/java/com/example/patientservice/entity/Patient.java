@@ -41,7 +41,9 @@ public class Patient {
 	private String pcg;
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
-	private String outStandingBalance;
+	private double outStandingBalance;
+	/*@Lob
+	private byte[] picture;*/
 
 	public String getMaritalStatus() {
 		return maritalStatus;
@@ -51,16 +53,15 @@ public class Patient {
 		this.maritalStatus = maritalStatus;
 	}
 
-	public String getOutStandingBalance() {
+	public Double getOutStandingBalance() {
 		return outStandingBalance;
 	}
 
-	public void setOutStandingBalance(String outStandingBalance) {
+	public void setOutStandingBalance(double outStandingBalance) {
 		this.outStandingBalance = outStandingBalance;
 	}
 
-	@Lob
-	private byte[] picture;
+	
 
 	public String getGender() {
 		return gender;
@@ -146,13 +147,13 @@ public class Patient {
 		this.prescriptionHistoryConsent = prescriptionHistoryConsent;
 	}
 
-	public byte[] getPicture() {
+	/*public byte[] getPicture() {
 		return picture;
 	}
 
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
-	}
+	}*/
 
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_id", referencedColumnName = "id")
