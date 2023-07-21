@@ -1,10 +1,20 @@
-package com.example.patientservice.uiRequest;
+package com.example.patientservice.entity;
 
-public class EmergencyContactUiRequest {
-	//r First Name(required), Last Name(Required), Relation(Required), 
-	//Phone Number(required), Ext(Optional),
-	//Address Line 1 and 2, City, State, zip Code, Country.
-	
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class EmergencyContact {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "emergencyContactId")
+	private Long emergencyContactId;
 	private String firstName;
 	private String lastName;
 	private String relation;
@@ -16,9 +26,19 @@ public class EmergencyContactUiRequest {
 	private String state;
 	private String zipCode;
 	private String country;
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "patient_id", referencedColumnName = "patientId") private
+	 * Patient patient;
+	 */
 	
-	
-	
+	public Long getEmergencyContactId() {
+		return emergencyContactId;
+	}
+	public void setEmergencyContactId(Long emergencyContactId) {
+		this.emergencyContactId = emergencyContactId;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -85,5 +105,5 @@ public class EmergencyContactUiRequest {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
 }

@@ -13,7 +13,6 @@ public class PatientUiRequest {
 	private String suffix;
 	private String firstName;
 	private String middleName;
-
 	private String preferredName;
 	private String addressLine1;
 	private String addressLine2;
@@ -37,6 +36,9 @@ public class PatientUiRequest {
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
 	private double outStandingBalance;
+	private List<EmergencyContactUiRequest> emergencyContacts;
+	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
+	
 	public String getGender() {
 		return gender;
 	}
@@ -62,25 +64,6 @@ public class PatientUiRequest {
 	public void setOutStandingBalance(double  outStandingBalance) {
 		this.outStandingBalance = outStandingBalance;
 	}
-
-
-
-
-	//class for emergency contact
-	//class for attorneys
-	//class for pharmacies
-	//class for referring provider
-	//class for responsible party
-//	private EmergencyContactUiRequest emergencyContact;
-//	private AttorneysUiRequest attorneysUiRequest
-//			;
-//	private PharmaciesUiRequest pharmaciesUiRequest;
-//	private ReferringProviderUiRequest referringProviderUiRequest;
-//	private ResponsiblePartyUiRequest responsiblePartyUiRequest;
-
-
-
-
 	public String getPrimaryPhoneNumber() {
 		return primaryPhoneNumber;
 	}
@@ -106,8 +89,6 @@ public class PatientUiRequest {
 	public void setReleaseOfInfo(String releaseOfInfo) {
 		this.releaseOfInfo = releaseOfInfo;
 	}
-
-
 
 	public String getEmpStatus() {
 		return empStatus;
@@ -157,8 +138,6 @@ public class PatientUiRequest {
 		this.prescriptionHistoryConsent = prescriptionHistoryConsent;
 	}
 
-	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
-
 	public int getAccountNo() {
 		return accountNo;
 	}
@@ -206,9 +185,7 @@ public class PatientUiRequest {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-
-
-
+	
 	public String getPreferredName() {
 		return preferredName;
 	}
@@ -272,9 +249,7 @@ public class PatientUiRequest {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-
-
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -290,9 +265,7 @@ public class PatientUiRequest {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
-
-
+	
 	public String getSsn() {
 		return ssn;
 	}
@@ -315,6 +288,14 @@ public class PatientUiRequest {
 
 	public void setMedicalHistory(List<MedicalHistoryUiRequest> medicalHistoryUiRequests) {
 		this.medicalHistoryUiRequests = medicalHistoryUiRequests;
+	}
+
+	public List<EmergencyContactUiRequest> getEmergencyContacts() {
+		return emergencyContacts;
+	}
+
+	public void setEmergencyContacts(List<EmergencyContactUiRequest> emergencyContacts) {
+		this.emergencyContacts = emergencyContacts;
 	}
 
 }

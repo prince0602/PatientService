@@ -41,7 +41,7 @@ public class PatientController {
 		return bl.getPatientDetails(patientId);
 	}
 
-	@CrossOrigin(origins = "http://localhost:8092")
+	@CrossOrigin(origins = "https://1489-2401-4900-1c01-9900-dc88-2ff1-cb2e-37a6.ngrok.io")
 
 	@GetMapping("/getAllPatients")
 	public List<PatientUIResponse> getAllPatients() {
