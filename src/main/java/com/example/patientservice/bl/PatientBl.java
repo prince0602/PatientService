@@ -1,7 +1,9 @@
 package com.example.patientservice.bl;
 
+import java.io.IOException;
 import java.util.List;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +12,9 @@ import com.example.patientservice.service.PatientService;
 import com.example.patientservice.uiRequest.PatientUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
 import com.example.patientservice.utility.PatientHelper;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Component
@@ -52,6 +57,9 @@ import com.example.patientservice.utility.PatientHelper;
 			List<PatientUIResponse> listOfPatients=PatientHelper.convertToPatientListUiResponse(patients);
 			return listOfPatients;
 		}
+        public void savePatientPicture(){
+
+        }
 
 
     }

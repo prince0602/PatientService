@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.validation.constraints.NotNull;
-
 @Component
 public class PatientUiRequest {
 	private int accountNo;
@@ -14,8 +12,8 @@ public class PatientUiRequest {
 	private String lastName;
 	private String suffix;
 	private String firstName;
-	private String middleInitial;
-	private String previousName;
+	private String middleName;
+
 	private String preferredName;
 	private String addressLine1;
 	private String addressLine2;
@@ -24,14 +22,141 @@ public class PatientUiRequest {
 	private String county;
 	private String zip;
 	private String country;
-	private String homePhone;
-	private String cellPhone;
-	private String workPhone;
-	private String extension;
 	private String email;
 	private LocalDate dateOfBirth;
-	private String sex;
 	private String ssn;
+	private String gender;
+	private String primaryPhoneNumber;
+	private String secondaryPhoneNumber;
+	private String releaseOfInfo;
+	private String empStatus;
+	private String ethnicity;
+	private String language;
+	private String pcp;
+	private String pcg;
+	private String prescriptionHistoryConsent;
+	private String maritalStatus;
+	private String outStandingBalance;
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+
+	public String getMaritalStatus() {
+		return maritalStatus;
+	}
+
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	public String getOutStandingBalance() {
+		return outStandingBalance;
+	}
+
+	public void setOutStandingBalance(String  outStandingBalance) {
+		this.outStandingBalance = outStandingBalance;
+	}
+
+
+
+
+	//class for emergency contact
+	//class for attorneys
+	//class for pharmacies
+	//class for referring provider
+	//class for responsible party
+//	private EmergencyContactUiRequest emergencyContact;
+//	private AttorneysUiRequest attorneysUiRequest
+//			;
+//	private PharmaciesUiRequest pharmaciesUiRequest;
+//	private ReferringProviderUiRequest referringProviderUiRequest;
+//	private ResponsiblePartyUiRequest responsiblePartyUiRequest;
+
+
+
+
+	public String getPrimaryPhoneNumber() {
+		return primaryPhoneNumber;
+	}
+
+	public void setPrimaryPhoneNumber(String primaryPhoneNumber) {
+		this.primaryPhoneNumber = primaryPhoneNumber;
+	}
+
+	public String getSecondaryPhoneNumber() {
+		return secondaryPhoneNumber;
+	}
+
+	public void setSecondaryPhoneNumber(String secondaryPhoneNumber) {
+		this.secondaryPhoneNumber = secondaryPhoneNumber;
+	}
+
+
+	public String getReleaseOfInfo() {
+		return releaseOfInfo;
+	}
+
+
+	public void setReleaseOfInfo(String releaseOfInfo) {
+		this.releaseOfInfo = releaseOfInfo;
+	}
+
+
+
+	public String getEmpStatus() {
+		return empStatus;
+	}
+
+	public void setEmpStatus(String empStatus) {
+		this.empStatus = empStatus;
+	}
+
+	public String getEthnicity() {
+		return ethnicity;
+	}
+
+	public void setEthnicity(String ethnicity) {
+		this.ethnicity = ethnicity;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getPcp() {
+		return pcp;
+	}
+
+	public void setPcp(String pcp) {
+		this.pcp = pcp;
+	}
+
+	public String getPcg() {
+		return pcg;
+	}
+
+	public void setPcg(String pcg) {
+		this.pcg = pcg;
+	}
+
+	public String getPrescriptionHistoryConsent() {
+		return prescriptionHistoryConsent;
+	}
+
+	public void setPrescriptionHistoryConsent(String prescriptionHistoryConsent) {
+		this.prescriptionHistoryConsent = prescriptionHistoryConsent;
+	}
+
 	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
 
 	public int getAccountNo() {
@@ -74,21 +199,15 @@ public class PatientUiRequest {
 		this.firstName = firstName;
 	}
 
-	public String getMiddleInitial() {
-		return middleInitial;
+	public String getMiddleName() {
+		return middleName;
 	}
 
-	public void setMiddleInitial(String middleInitial) {
-		this.middleInitial = middleInitial;
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
 	}
 
-	public String getPreviousName() {
-		return previousName;
-	}
 
-	public void setPreviousName(String previousName) {
-		this.previousName = previousName;
-	}
 
 	public String getPreferredName() {
 		return preferredName;
@@ -154,37 +273,7 @@ public class PatientUiRequest {
 		this.country = country;
 	}
 
-	public String getHomePhone() {
-		return homePhone;
-	}
 
-	public void setHomePhone(String homePhone) {
-		this.homePhone = homePhone;
-	}
-
-	public String getCellPhone() {
-		return cellPhone;
-	}
-
-	public void setCellPhone(String cellPhone) {
-		this.cellPhone = cellPhone;
-	}
-
-	public String getWorkPhone() {
-		return workPhone;
-	}
-
-	public void setWorkPhone(String workPhone) {
-		this.workPhone = workPhone;
-	}
-
-	public String getExtension() {
-		return extension;
-	}
-
-	public void setExtension(String extension) {
-		this.extension = extension;
-	}
 
 	public String getEmail() {
 		return email;
@@ -202,13 +291,7 @@ public class PatientUiRequest {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getSex() {
-		return sex;
-	}
 
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
 
 	public String getSsn() {
 		return ssn;
