@@ -25,8 +25,15 @@ import org.springframework.web.multipart.MultipartFile;
 
     public Long createPatient(PatientUiRequest req)
         {
-            System.out.println("test");
+
             Patient p = PatientHelper.convertPatientRequest(req);
+//            if (req.getImageFile() != null && !req.getImageFile().isEmpty()) {
+//                try {
+//                    p.setImage(req.getImageFile().getBytes());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
             Long patId=service.createPatient(p);
             return patId;
             //return null;

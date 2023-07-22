@@ -36,7 +36,7 @@ public class PatientUiRequest {
 	private String pcg;
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
-	private String outStandingBalance;
+	private double outStandingBalance;
 	public String getGender() {
 		return gender;
 	}
@@ -55,11 +55,11 @@ public class PatientUiRequest {
 		this.maritalStatus = maritalStatus;
 	}
 
-	public String getOutStandingBalance() {
+	public double getOutStandingBalance() {
 		return outStandingBalance;
 	}
 
-	public void setOutStandingBalance(String  outStandingBalance) {
+	public void setOutStandingBalance(double  outStandingBalance) {
 		this.outStandingBalance = outStandingBalance;
 	}
 

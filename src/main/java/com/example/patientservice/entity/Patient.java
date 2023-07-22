@@ -41,8 +41,9 @@ public class Patient {
 	private String pcg;
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
-	private String outStandingBalance;
-
+	private double outStandingBalance;
+	@Lob
+	private byte[] picture;
 	public String getMaritalStatus() {
 		return maritalStatus;
 	}
@@ -51,16 +52,15 @@ public class Patient {
 		this.maritalStatus = maritalStatus;
 	}
 
-	public String getOutStandingBalance() {
+	public double getOutStandingBalance() {
 		return outStandingBalance;
 	}
 
-	public void setOutStandingBalance(String outStandingBalance) {
+	public void setOutStandingBalance(double outStandingBalance) {
 		this.outStandingBalance = outStandingBalance;
 	}
 
-	@Lob
-	private byte[] picture;
+
 
 	public String getGender() {
 		return gender;

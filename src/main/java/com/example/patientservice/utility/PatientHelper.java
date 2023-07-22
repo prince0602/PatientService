@@ -32,7 +32,8 @@ public class PatientHelper {
 		p.setState(req.getState());
 		p.setZip(req.getZip());
 		p.setSuffix(req.getSuffix());
-
+		p.setState(req.getState());
+		p.setDateOfBirth(req.getDateOfBirth());
 		p.setReleaseOfInfo(req.getReleaseOfInfo());
 		p.setPrimaryPhoneNumber(req.getPrimaryPhoneNumber());
 		p.setSecondaryPhoneNumber(req.getSecondaryPhoneNumber());
@@ -83,7 +84,7 @@ public class PatientHelper {
 		uiResponse.setMiddleName(p.getMiddleName());
 		uiResponse.setLastName(p.getLastName());
 		uiResponse.setPreferredName(p.getPreferredName());
-
+	uiResponse.setState(p.getState());
 		uiResponse.setPrefix(p.getPrefix());
 		uiResponse.setSuffix(p.getSuffix());
 		uiResponse.setReleaseOfInfo(p.getReleaseOfInfo());
@@ -92,8 +93,8 @@ public class PatientHelper {
 		uiResponse.setSecondaryPhoneNumber(p.getSecondaryPhoneNumber());
 		uiResponse.setPcg(p.getPcg());
 		uiResponse.setPcp(p.getPcp());
-		uiResponse.setLanguage(p.getGender());
-		uiResponse.setEthnicity(p.getGender());
+		uiResponse.setLanguage(p.getLanguage());
+		uiResponse.setEthnicity(p.getEthnicity());
 		uiResponse.setPrescriptionHistoryConsent(p.getPrescriptionHistoryConsent());
 		uiResponse.setEmpStatus(p.getEmpStatus());
 		uiResponse.setMaritalStatus(p.getMaritalStatus());
