@@ -1,20 +1,20 @@
 package com.example.patientservice.bl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import com.example.patientservice.entity.Patient;
 import com.example.patientservice.service.PatientService;
+import com.example.patientservice.service.ReadJsonFileService;
 import com.example.patientservice.uiRequest.PatientUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
+import com.example.patientservice.uiResponse.RefferingProviderDemoData;
 import com.example.patientservice.utility.PatientHelper;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Component
@@ -22,6 +22,12 @@ import org.springframework.web.multipart.MultipartFile;
      
     @Autowired
     PatientService service;
+    
+    @Autowired
+    ReadJsonFileService jsonService;
+    
+    @Autowired
+    RestTemplate restTemplate;
 
     public Long createPatient(PatientUiRequest req)
         {
@@ -60,6 +66,20 @@ import org.springframework.web.multipart.MultipartFile;
         public void savePatientPicture(){
 
         }
+
+		public List<RefferingProviderDemoData> getNpdiDetails() {
+			// TODO Auto-generated method stub
+		//	restTemplate.get
+			
+			List<RefferingProviderDemoData> readRefferingProviderJsonFile = new ArrayList<RefferingProviderDemoData>();
+			try {
+				readRefferingProviderJsonFile= jsonService.readRefferingProviderJsonFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return readRefferingProviderJsonFile;
+		}
 
 
     }
