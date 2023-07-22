@@ -3,9 +3,10 @@ package com.example.patientservice.utility;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.patientservice.entity.EmergencyContact;
 import com.example.patientservice.entity.MedicalHistory;
 import com.example.patientservice.entity.Patient;
-import com.example.patientservice.uiRequest.MedicalHistoryUiRequest;
+import com.example.patientservice.uiRequest.EmergencyContactUiRequest;
 import com.example.patientservice.uiRequest.PatientUiRequest;
 import com.example.patientservice.uiResponse.MedicalHistoryUiResponse;
 import com.example.patientservice.uiResponse.PatientUIResponse;
@@ -46,7 +47,7 @@ public class PatientHelper {
 		p.setMaritalStatus(req.getMaritalStatus());
 		p.setOutStandingBalance(req.getOutStandingBalance());
 
-		List<MedicalHistory> medicalHistories = new ArrayList<MedicalHistory>();
+	/*	List<MedicalHistory> medicalHistories = new ArrayList<MedicalHistory>();
 		List<MedicalHistoryUiRequest> medicalHistoryUiRequests = req.getMedicalHistory();
 		if (medicalHistoryUiRequests != null) {
 			for (MedicalHistoryUiRequest mReq : medicalHistoryUiRequests) {
@@ -60,8 +61,30 @@ public class PatientHelper {
 			}
 			p.setMedicalHistory(medicalHistories);
 
+		}*/
+		
+		List<EmergencyContact> emergencyContacts = new ArrayList<EmergencyContact>();
+		List<EmergencyContactUiRequest> emergencyContactsUiRequests = req.getEmergencyContacts();
+		if(emergencyContactsUiRequests!=null)
+		{
+			for(EmergencyContactUiRequest emergencyContact:emergencyContactsUiRequests)
+			{
+				EmergencyContact contact = new EmergencyContact();
+				contact.setAddressLine1(emergencyContact.getAddressLine1());
+				contact.setAddressLine2(emergencyContact.getAddressLine2());
+				contact.setCity(emergencyContact.getCity());
+				contact.setCountry(	emergencyContact.getCountry());
+				contact.setExt(emergencyContact.getExt());
+				contact.setFirstName(emergencyContact.getFirstName());
+				contact.setPhoneNumber(	emergencyContact.getPhoneNumber());
+				contact.setLastName(emergencyContact.getLastName());
+				contact.setRelation(emergencyContact.getRelation());
+				contact.setZipCode(emergencyContact.getZipCode());
+				contact.setState(emergencyContact.getState());
+				emergencyContacts.add(contact);
+			}
 		}
-
+		p.setEmergencyContact(emergencyContacts);
 		return p;
 	}
 
@@ -88,7 +111,9 @@ public class PatientHelper {
 		uiResponse.setPrefix(p.getPrefix());
 		uiResponse.setSuffix(p.getSuffix());
 		uiResponse.setReleaseOfInfo(p.getReleaseOfInfo());
-
+		uiResponse.setState(p.getState());
+		
+		uiResponse.setDateOfBirth(p.getDateOfBirth());
 		uiResponse.setPrimaryPhoneNumber(p.getPrimaryPhoneNumber());
 		uiResponse.setSecondaryPhoneNumber(p.getSecondaryPhoneNumber());
 		uiResponse.setPcg(p.getPcg());
@@ -99,18 +124,19 @@ public class PatientHelper {
 		uiResponse.setEmpStatus(p.getEmpStatus());
 		uiResponse.setMaritalStatus(p.getMaritalStatus());
 		uiResponse.setOutStandingBalance(p.getOutStandingBalance());
-		List<MedicalHistory> listOfMedicalHistory = p.getMedicalHistory();
-		List<MedicalHistoryUiResponse> medicalHistoryUiResponse = new ArrayList<MedicalHistoryUiResponse>();
-		for (MedicalHistory medicalHistory : listOfMedicalHistory) {
-			MedicalHistoryUiResponse m = new MedicalHistoryUiResponse();
-			m.setAppointmentDate(medicalHistory.getAppointmentDate());
-			m.setDiagnosis(medicalHistory.getDiagnosis());
-			m.setDiagnosis(medicalHistory.getDoctorName());
-			m.setMedication(medicalHistory.getMedication());
-			m.setSymptoms(medicalHistory.getSymptoms());
-			medicalHistoryUiResponse.add(m);
-		}
-		uiResponse.setListOfMedicalHistory(medicalHistoryUiResponse);
+		/*
+		 * List<MedicalHistory> listOfMedicalHistory = p.getMedicalHistory();
+		 * List<MedicalHistoryUiResponse> medicalHistoryUiResponse = new
+		 * ArrayList<MedicalHistoryUiResponse>(); for (MedicalHistory medicalHistory :
+		 * listOfMedicalHistory) { MedicalHistoryUiResponse m = new
+		 * MedicalHistoryUiResponse();
+		 * m.setAppointmentDate(medicalHistory.getAppointmentDate());
+		 * m.setDiagnosis(medicalHistory.getDiagnosis());
+		 * m.setDiagnosis(medicalHistory.getDoctorName());
+		 * m.setMedication(medicalHistory.getMedication());
+		 * m.setSymptoms(medicalHistory.getSymptoms()); medicalHistoryUiResponse.add(m);
+		 * } uiResponse.setListOfMedicalHistory(medicalHistoryUiResponse);
+		 */
 		return uiResponse;
 	}
 

@@ -11,7 +11,8 @@ import lombok.Data;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "patientId")
+    private Long patientId;
     private int accountNo;
 	private String prefix;
 	private String lastName;
@@ -42,8 +43,25 @@ public class Patient {
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
 	private double outStandingBalance;
+
 	@Lob
 	private byte[] picture;
+
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "emergencyContactId", referencedColumnName =
+	 * "emergencyContactId") private List<EmergencyContact> emergencyContact;
+	 */
+	/*@Lob
+	private byte[] picture;*/
+
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id", referencedColumnName = "patientId")
+    private List<EmergencyContact> emergencyContact;
+	
+	
+
 	public String getMaritalStatus() {
 		return maritalStatus;
 	}
@@ -52,14 +70,18 @@ public class Patient {
 		this.maritalStatus = maritalStatus;
 	}
 
+
+
+
 	public double getOutStandingBalance() {
+
 		return outStandingBalance;
 	}
 
 	public void setOutStandingBalance(double outStandingBalance) {
 		this.outStandingBalance = outStandingBalance;
-	}
 
+	}
 
 
 	public String getGender() {
@@ -146,17 +168,14 @@ public class Patient {
 		this.prescriptionHistoryConsent = prescriptionHistoryConsent;
 	}
 
-	public byte[] getPicture() {
+	/*public byte[] getPicture() {
 		return picture;
 	}
 
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
-	}
+	}*/
 
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patient_id", referencedColumnName = "id")
-    private List<MedicalHistory> medicalHistory;
    
 	public int getAccountNo() {
 		return accountNo;
@@ -292,22 +311,22 @@ public class Patient {
 
 
 
-	public List<MedicalHistory> getMedicalHistory() {
-		return medicalHistory;
+	public List<EmergencyContact> getEmergencyContact() {
+		return emergencyContact;
 	}
 
-	public void setMedicalHistory(List<MedicalHistory> medicalHistory) {
-		this.medicalHistory = medicalHistory;
+	public void setEmergencyContact(List<EmergencyContact> emergencyContact) {
+		this.emergencyContact = emergencyContact;
 	}
 
 	
 
     public Long getId() {
-        return id;
+        return patientId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long patientId) {
+        this.patientId = patientId;
     }
 
    
