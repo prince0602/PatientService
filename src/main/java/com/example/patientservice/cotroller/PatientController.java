@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.patientservice.bl.PatientBl;
+import com.example.patientservice.response.DemoNdpiResponse;
 import com.example.patientservice.uiRequest.PatientUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
+import com.example.patientservice.uiResponse.RefferingProviderDemoData;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -47,5 +49,11 @@ public class PatientController {
 	public List<PatientUIResponse> getAllPatients() {
 		return bl.getAllPatients();
 	}
+	
+	@PostMapping("/getNpdi")
+	public List<RefferingProviderDemoData> getNpdiResponse()
+	{
+		return bl.getNpdiDetails();
+		}
 
 }

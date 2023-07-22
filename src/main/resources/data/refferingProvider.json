@@ -1,0 +1,42 @@
+[
+  {
+    "npi": "1234567890",
+    "npiType": "Individual",
+    "specialty": "Family Medicine",
+    "providerFirstName": "John",
+    "providerLastName": "Smith",
+    "organisationName": ""
+  },
+  {
+    "npi": "9876543210",
+    "npiType": "Individual",
+    "specialty": "Paediatrics",
+    "providerFirstName": "Emily",
+    "providerLastName": "Johnson",
+    "organisationName": ""
+  },
+  {
+    "npi": "4567890123",
+    "npiType": "Organization",
+    "specialty": "Cardiology",
+    "organisationName": "HeartCare Clinic",
+    "providerFirstName": "",
+    "providerLastName": ""
+  },
+  {
+    "npi": "1357924680",
+    "npiType": "Individual",
+    "specialty": "Dermatology",
+    "providerFirstName": "Michael",
+    "providerLastName": "Brown",
+    "organisationName": ""
+  },
+  {
+    "npi": "2468135790",
+    "npiType": "Organization",
+    "specialty": "Orthopedics",
+    "organisationName": "JointFlex Hospital",
+    "providerFirstName": "",
+    "providerLastName": ""
+  }
+]
