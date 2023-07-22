@@ -36,12 +36,30 @@ public class PatientUiRequest {
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
 	private double outStandingBalance;
-<<<<<<< HEAD
-=======
+	private String profileImage;
 	private List<EmergencyContactUiRequest> emergencyContacts;
-	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
+	private ReferringProviderUiRequest referringProvider;
+
+	public ReferringProviderUiRequest getReferringProviderUiRequest() {
+		return referringProvider;
+	}
+
+	public void setReferringProviderUiRequest(ReferringProviderUiRequest referringProviderUiRequest) {
+		this.referringProvider = referringProviderUiRequest;
+	}
+
+	//	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
+
 	
->>>>>>> 934326f06a3e76c63b7337e624072cf6d5d00afb
+
 	public String getGender() {
 		return gender;
 	}
@@ -277,21 +295,15 @@ public class PatientUiRequest {
 		this.ssn = ssn;
 	}
 
-	public List<MedicalHistoryUiRequest> getMedicalHistoryUiRequests() {
-		return medicalHistoryUiRequests;
-	}
+//	public List<MedicalHistoryUiRequest> getMedicalHistoryUiRequests() {
+//		return medicalHistoryUiRequests;
+//	}
+//
+//	public void setMedicalHistoryUiRequests(List<MedicalHistoryUiRequest> medicalHistoryUiRequests) {
+//		this.medicalHistoryUiRequests = medicalHistoryUiRequests;
+//	}
 
-	public void setMedicalHistoryUiRequests(List<MedicalHistoryUiRequest> medicalHistoryUiRequests) {
-		this.medicalHistoryUiRequests = medicalHistoryUiRequests;
-	}
 
-	public List<MedicalHistoryUiRequest> getMedicalHistory() {
-		return medicalHistoryUiRequests;
-	}
-
-	public void setMedicalHistory(List<MedicalHistoryUiRequest> medicalHistoryUiRequests) {
-		this.medicalHistoryUiRequests = medicalHistoryUiRequests;
-	}
 
 	public List<EmergencyContactUiRequest> getEmergencyContacts() {
 		return emergencyContacts;
@@ -300,5 +312,6 @@ public class PatientUiRequest {
 	public void setEmergencyContacts(List<EmergencyContactUiRequest> emergencyContacts) {
 		this.emergencyContacts = emergencyContacts;
 	}
+
 
 }

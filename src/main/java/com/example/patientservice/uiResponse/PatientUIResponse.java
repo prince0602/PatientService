@@ -38,7 +38,25 @@ public class PatientUIResponse {
     private String prescriptionHistoryConsent;
     private String maritalStatus;
     private double outStandingBalance;
+    private List<MedicalHistoryUiResponse> listOfMedicalHistory;
+    private List<EmergencyContactUiResponse> listOfEmergencyContacts;
+    private String profileImage;
 
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public List<EmergencyContactUiResponse> getListOfEmergencyContacts() {
+        return listOfEmergencyContacts;
+    }
+
+    public void setListOfEmergencyContacts(List<EmergencyContactUiResponse> listOfEmergencyContacts) {
+        this.listOfEmergencyContacts = listOfEmergencyContacts;
+    }
 
     public String getPrimaryPhoneNumber() {
         return primaryPhoneNumber;
@@ -116,7 +134,7 @@ public class PatientUIResponse {
         this.prescriptionHistoryConsent = prescriptionHistoryConsent;
     }
 
-    private List<MedicalHistoryUiResponse> listOfMedicalHistory;
+
 
     public List<MedicalHistoryUiResponse> getListOfMedicalHistory() {
 		return listOfMedicalHistory;

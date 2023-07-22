@@ -1,7 +1,11 @@
-package com.example.patientservice.uiRequest;
+package com.example.patientservice.entity;
 
-public class ReferringProviderUiRequest {
+import jakarta.persistence.*;
 
+@Entity
+public class ReferringProvider {
+
+    @Id
     private String npi;
     private String npiType;
     private String specialty;
@@ -9,14 +13,6 @@ public class ReferringProviderUiRequest {
     private String providerLastName;
     private String organisationName;
 
-    public ReferringProviderUiRequest(String npi, String npiType, String specialty, String providerFirstName, String providerLastName, String organisationName) {
-        this.npi = npi;
-        this.npiType = npiType;
-        this.specialty = specialty;
-        this.providerFirstName = providerFirstName;
-        this.providerLastName = providerLastName;
-        this.organisationName = organisationName;
-    }
 
     public String getNpi() {
         return npi;

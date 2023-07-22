@@ -43,9 +43,41 @@ public class Patient {
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
 	private double outStandingBalance;
+	private String profileImage;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
+	private List<EmergencyContact> emergencyContact;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
+	private ReferringProvider referringProvider;
 
-	@Lob
-	private byte[] picture;
+	public ReferringProvider getReferringProvider() {
+		return referringProvider;
+	}
+
+	public void setReferringProvider(ReferringProvider referringProvider) {
+		this.referringProvider = referringProvider;
+	}
+
+	public Long getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
+	}
+
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
+
+
+
 
 	/*
 	 * @OneToMany(cascade = CascadeType.ALL)
@@ -56,11 +88,6 @@ public class Patient {
 	/*@Lob
 	private byte[] picture;*/
 
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patient_id", referencedColumnName = "patientId")
-    private List<EmergencyContact> emergencyContact;
-	
-	
 
 	public String getMaritalStatus() {
 		return maritalStatus;

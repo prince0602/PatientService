@@ -6,8 +6,11 @@ import java.util.List;
 import com.example.patientservice.entity.EmergencyContact;
 import com.example.patientservice.entity.MedicalHistory;
 import com.example.patientservice.entity.Patient;
+import com.example.patientservice.entity.ReferringProvider;
 import com.example.patientservice.uiRequest.EmergencyContactUiRequest;
 import com.example.patientservice.uiRequest.PatientUiRequest;
+import com.example.patientservice.uiRequest.ReferringProviderUiRequest;
+import com.example.patientservice.uiResponse.EmergencyContactUiResponse;
 import com.example.patientservice.uiResponse.MedicalHistoryUiResponse;
 import com.example.patientservice.uiResponse.PatientUIResponse;
 
@@ -46,6 +49,7 @@ public class PatientHelper {
 		p.setEmpStatus(req.getEmpStatus());
 		p.setMaritalStatus(req.getMaritalStatus());
 		p.setOutStandingBalance(req.getOutStandingBalance());
+		p.setProfileImage(req.getProfileImage());
 
 	/*	List<MedicalHistory> medicalHistories = new ArrayList<MedicalHistory>();
 		List<MedicalHistoryUiRequest> medicalHistoryUiRequests = req.getMedicalHistory();
@@ -62,7 +66,16 @@ public class PatientHelper {
 			p.setMedicalHistory(medicalHistories);
 
 		}*/
-		
+		ReferringProviderUiRequest referringProviderUiRequest = req.getReferringProviderUiRequest();
+		ReferringProvider referringProvider=new ReferringProvider();
+		referringProvider.setNpi(referringProviderUiRequest.getNpi());
+		referringProvider.setProviderLastName(referringProviderUiRequest.getProviderLastName());
+		referringProvider.setProviderFirstName(referringProviderUiRequest.getProviderFirstName());
+		referringProvider.setNpiType(referringProviderUiRequest.getNpiType());
+		referringProvider.setSpecialty(referringProviderUiRequest.getSpecialty());
+		referringProvider.setOrganisationName(referringProviderUiRequest.getOrganisationName());
+
+		p.setReferringProvider(referringProvider);
 		List<EmergencyContact> emergencyContacts = new ArrayList<EmergencyContact>();
 		List<EmergencyContactUiRequest> emergencyContactsUiRequests = req.getEmergencyContacts();
 		if(emergencyContactsUiRequests!=null)
@@ -107,7 +120,7 @@ public class PatientHelper {
 		uiResponse.setMiddleName(p.getMiddleName());
 		uiResponse.setLastName(p.getLastName());
 		uiResponse.setPreferredName(p.getPreferredName());
-	uiResponse.setState(p.getState());
+		uiResponse.setState(p.getState());
 		uiResponse.setPrefix(p.getPrefix());
 		uiResponse.setSuffix(p.getSuffix());
 		uiResponse.setReleaseOfInfo(p.getReleaseOfInfo());
@@ -124,19 +137,39 @@ public class PatientHelper {
 		uiResponse.setEmpStatus(p.getEmpStatus());
 		uiResponse.setMaritalStatus(p.getMaritalStatus());
 		uiResponse.setOutStandingBalance(p.getOutStandingBalance());
-		/*
-		 * List<MedicalHistory> listOfMedicalHistory = p.getMedicalHistory();
-		 * List<MedicalHistoryUiResponse> medicalHistoryUiResponse = new
-		 * ArrayList<MedicalHistoryUiResponse>(); for (MedicalHistory medicalHistory :
-		 * listOfMedicalHistory) { MedicalHistoryUiResponse m = new
-		 * MedicalHistoryUiResponse();
-		 * m.setAppointmentDate(medicalHistory.getAppointmentDate());
-		 * m.setDiagnosis(medicalHistory.getDiagnosis());
-		 * m.setDiagnosis(medicalHistory.getDoctorName());
-		 * m.setMedication(medicalHistory.getMedication());
-		 * m.setSymptoms(medicalHistory.getSymptoms()); medicalHistoryUiResponse.add(m);
-		 * } uiResponse.setListOfMedicalHistory(medicalHistoryUiResponse);
-		 */
+		uiResponse.setProfileImage(p.getProfileImage());
+
+
+//		  List<MedicalHistory> listOfMedicalHistory = p.getMedicalHistory();
+//		  List<MedicalHistoryUiResponse> medicalHistoryUiResponse = new
+//		  ArrayList<MedicalHistoryUiResponse>(); for (MedicalHistory medicalHistory :
+//		 listOfMedicalHistory) { MedicalHistoryUiResponse m = new
+//		  MedicalHistoryUiResponse();
+//		  m.setAppointmentDate(medicalHistory.getAppointmentDate());
+//		 m.setDiagnosis(medicalHistory.getDiagnosis());
+//		 m.setDiagnosis(medicalHistory.getDoctorName());
+//		  m.setMedication(medicalHistory.getMedication());
+//		 m.setSymptoms(medicalHistory.getSymptoms()); medicalHistoryUiResponse.add(m);
+//		  } uiResponse.setListOfMedicalHistory(medicalHistoryUiResponse);
+
+		List<EmergencyContact> listOfEmergencyContact=p.getEmergencyContact();
+		List<EmergencyContactUiResponse> emergencyContactUiResponse=new ArrayList<EmergencyContactUiResponse>();
+		for(EmergencyContact emergencyContact:listOfEmergencyContact){
+			EmergencyContactUiResponse emergencyContactUiResponse1=new EmergencyContactUiResponse();
+			emergencyContactUiResponse1.setCity(emergencyContact.getCity());
+			emergencyContactUiResponse1.setExt(emergencyContact.getExt());
+			emergencyContactUiResponse1.setCountry(emergencyContact.getCountry());
+			emergencyContactUiResponse1.setState(emergencyContact.getState());
+			emergencyContactUiResponse1.setRelation(emergencyContact.getRelation());
+			emergencyContactUiResponse1.setAddressLine1(emergencyContact.getAddressLine1());
+			emergencyContactUiResponse1.setAddressLine2(emergencyContact.getAddressLine2());
+			emergencyContactUiResponse1.setFirstName(emergencyContact.getFirstName());
+			emergencyContactUiResponse1.setLastName(emergencyContact.getLastName());
+			emergencyContactUiResponse1.setPhoneNumber(emergencyContact.getPhoneNumber());
+			emergencyContactUiResponse1.setZipCode(emergencyContact.getZipCode());
+			emergencyContactUiResponse.add(emergencyContactUiResponse1);
+		}
+		uiResponse.setListOfEmergencyContacts(emergencyContactUiResponse);
 		return uiResponse;
 	}
 
