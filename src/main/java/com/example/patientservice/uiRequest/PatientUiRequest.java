@@ -5,8 +5,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Lob;
+
 @Component
 public class PatientUiRequest {
+	
+	
+	private byte[] imageData;
 	private int accountNo;
 	private String prefix;
 	private String lastName;
@@ -38,6 +44,7 @@ public class PatientUiRequest {
 	private double outStandingBalance;
 	private String profileImage;
 	private List<EmergencyContactUiRequest> emergencyContacts;
+<<<<<<< Updated upstream
 	private ReferringProviderUiRequest referringProvider;
 
 	public ReferringProviderUiRequest getReferringProviderUiRequest() {
@@ -58,6 +65,18 @@ public class PatientUiRequest {
 	}
 
 
+=======
+	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
+    public byte[] getImageData() {
+		return imageData;
+	}
+
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
+
+	
+>>>>>>> Stashed changes
 	
 
 	public String getGender() {

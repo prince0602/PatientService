@@ -13,7 +13,18 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "patientId")
     private Long patientId;
-    private int accountNo;
+    @Lob
+    @Column(name = "profilePic")
+    private byte[] profileImage;
+    public byte[] getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(byte[] profileImage) {
+		this.profileImage = profileImage;
+	}
+
+	private int accountNo;
 	private String prefix;
 	private String lastName;
 	private String suffix;
