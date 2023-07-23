@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.patientservice.cotroller.ProviderUiResponse;
 import com.example.patientservice.entity.Patient;
+import com.example.patientservice.service.ExternalService;
 import com.example.patientservice.service.PatientService;
 import com.example.patientservice.service.ReadJsonFileService;
 import com.example.patientservice.uiRequest.PatientUiRequest;
+import com.example.patientservice.uiRequest.SearchProviderUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
 import com.example.patientservice.uiResponse.RefferingProviderDemoData;
 import com.example.patientservice.utility.PatientHelper;
@@ -28,6 +31,9 @@ import com.example.patientservice.utility.PatientHelper;
     
     @Autowired
     RestTemplate restTemplate;
+    
+    @Autowired
+    ExternalService externalService;
 
     public Long createPatient(PatientUiRequest req)
         {
@@ -86,6 +92,13 @@ import com.example.patientservice.utility.PatientHelper;
 				e.printStackTrace();
 			}
 			return readRefferingProviderJsonFile;
+		}
+
+		public List<ProviderUiResponse> searchProvider(String npiNumber) {
+			// TODO Auto-generated method stub
+			String result=externalService.callApi(npiNumber);
+			
+			return null;
 		}
 
 

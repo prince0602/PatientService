@@ -8,19 +8,16 @@ import com.example.patientservice.entity.Patient;
 import com.example.patientservice.entity.ReferringProvider;
 import com.example.patientservice.uiRequest.EmergencyContactUiRequest;
 import com.example.patientservice.uiRequest.PatientUiRequest;
-<<<<<<< Updated upstream
 import com.example.patientservice.uiRequest.ReferringProviderUiRequest;
 import com.example.patientservice.uiResponse.EmergencyContactUiResponse;
 import com.example.patientservice.uiResponse.MedicalHistoryUiResponse;
-=======
->>>>>>> Stashed changes
 import com.example.patientservice.uiResponse.PatientUIResponse;
 
 public class PatientHelper {
 	public static Patient convertPatientRequest(PatientUiRequest req) {
 		Patient p = new Patient();
 		
-		p.setProfileImage(ImageHelper.compressImage(req.getImageData()));
+		//p.setProfileImage(ImageHelper.compressImage(req.getImageData()));
 
 		p.setAccountNo(req.getAccountNo());
 		p.setPrefix(req.getPrefix());
@@ -70,7 +67,7 @@ public class PatientHelper {
 			p.setMedicalHistory(medicalHistories);
 
 		}*/
-		ReferringProviderUiRequest referringProviderUiRequest = req.getReferringProviderUiRequest();
+		ReferringProviderUiRequest referringProviderUiRequest = req.getReferringProvider();
 		ReferringProvider referringProvider=new ReferringProvider();
 		referringProvider.setNpi(referringProviderUiRequest.getNpi());
 		referringProvider.setProviderLastName(referringProviderUiRequest.getProviderLastName());

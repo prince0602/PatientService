@@ -44,15 +44,25 @@ public class PatientUiRequest {
 	private double outStandingBalance;
 	private String profileImage;
 	private List<EmergencyContactUiRequest> emergencyContacts;
-<<<<<<< Updated upstream
+
 	private ReferringProviderUiRequest referringProvider;
 
-	public ReferringProviderUiRequest getReferringProviderUiRequest() {
+	
+
+	public ReferringProviderUiRequest getReferringProvider() {
 		return referringProvider;
 	}
 
-	public void setReferringProviderUiRequest(ReferringProviderUiRequest referringProviderUiRequest) {
-		this.referringProvider = referringProviderUiRequest;
+	public void setReferringProvider(ReferringProviderUiRequest referringProvider) {
+		this.referringProvider = referringProvider;
+	}
+
+	public List<MedicalHistoryUiRequest> getMedicalHistoryUiRequests() {
+		return medicalHistoryUiRequests;
+	}
+
+	public void setMedicalHistoryUiRequests(List<MedicalHistoryUiRequest> medicalHistoryUiRequests) {
+		this.medicalHistoryUiRequests = medicalHistoryUiRequests;
 	}
 
 	//	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
@@ -65,7 +75,7 @@ public class PatientUiRequest {
 	}
 
 
-=======
+
 	private List<MedicalHistoryUiRequest> medicalHistoryUiRequests;
     public byte[] getImageData() {
 		return imageData;
@@ -76,7 +86,7 @@ public class PatientUiRequest {
 	}
 
 	
->>>>>>> Stashed changes
+
 	
 
 	public String getGender() {
