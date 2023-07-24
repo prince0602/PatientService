@@ -10,14 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.patientservice.bl.PatientBl;
 import com.example.patientservice.uiRequest.PatientUiRequest;
-import com.example.patientservice.uiRequest.SearchProviderUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
-import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -51,17 +48,7 @@ public class PatientController {
 		return bl.getAllPatients();
 	}
 	
-	@GetMapping("/getAllRefferal")
-	public List<ReferringProviderUiResponse> getNpdiResponse()
-	{
-		return bl.getNpdiDetails();
-	}
 	
-	@PostMapping("/searchProvider/{npiNumber}")
-	public List<ProviderUiResponse> searchProvider(@PathVariable String npiNumber)
-	{
-		return bl.searchProvider(npiNumber);
-	}
 	
 	
 

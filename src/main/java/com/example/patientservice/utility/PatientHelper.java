@@ -201,4 +201,17 @@ public class PatientHelper {
 		resp.setSpecialty(referringProvider.getSpecialty());
 		return resp;
 	}
+
+	public static ReferringProvider conertFromReferringProviderUiRequest(ReferringProviderUiRequest req) {
+		// TODO Auto-generated method stub
+		ReferringProvider referringProvider = new ReferringProvider();
+		referringProvider.setNpi(req.getNpi());
+		referringProvider.setNpiType(req.getNpiType());
+		referringProvider.setOrganisationName(req.getOrganisationName());
+		referringProvider.setProviderFirstName(req.getProviderFirstName());
+		referringProvider.setProviderLastName(req.getProviderLastName());
+		referringProvider.setSpecialty(req.getSpecialty());
+		
+		return referringProvider;
+	}
 }

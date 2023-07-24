@@ -16,4 +16,15 @@ public class ReferringProviderService {
 		return repo.findById(referringProviderId).orElse(null);
 	}
 
+	public String addReferringProvider(ReferringProvider referringProvider) {
+		// TODO Auto-generated method stub
+		
+		
+		 ReferringProvider addedReferringProvider = repo.save(referringProvider);
+		 if(addedReferringProvider!=null)
+			 return "Success";
+		 else
+			 return "failure";
+	}
+
 }

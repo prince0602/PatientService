@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.patientservice.cotroller.ProviderUiResponse;
 import com.example.patientservice.entity.Patient;
 import com.example.patientservice.entity.ReferringProvider;
 import com.example.patientservice.service.ExternalService;
@@ -16,6 +15,7 @@ import com.example.patientservice.service.PatientService;
 import com.example.patientservice.service.ReadJsonFileService;
 import com.example.patientservice.service.ReferringProviderService;
 import com.example.patientservice.uiRequest.PatientUiRequest;
+import com.example.patientservice.uiRequest.ReferringProviderUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
 import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 import com.example.patientservice.utility.PatientHelper;
@@ -102,11 +102,19 @@ import com.example.patientservice.utility.PatientHelper;
 			return readRefferingProviderJsonFile;
 		}
 
-		public List<ProviderUiResponse> searchProvider(String npiNumber) {
+		public String searchProvider(String npiNumber) {
 			// TODO Auto-generated method stub
 			String result=externalService.callApi(npiNumber);
 			
 			return null;
+		}
+
+		public String addReferringProvider(ReferringProviderUiRequest req) {
+			// TODO Auto-generated method stub
+			
+			ReferringProvider referringProvider =PatientHelper.conertFromReferringProviderUiRequest(req);
+			return referringService.addReferringProvider(referringProvider);
+			
 		}
 
 
