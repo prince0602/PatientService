@@ -41,8 +41,17 @@ public class PatientUIResponse {
     private List<MedicalHistoryUiResponse> listOfMedicalHistory;
     private List<EmergencyContactUiResponse> listOfEmergencyContacts;
     private String profileImage;
+    private ReferringProviderUiResponse referringProvider;
 
-    public String getProfileImage() {
+    public ReferringProviderUiResponse getReferringProvider() {
+		return referringProvider;
+	}
+
+	public void setReferringProvider(ReferringProviderUiResponse referringProvider) {
+		this.referringProvider = referringProvider;
+	}
+
+	public String getProfileImage() {
         return profileImage;
     }
 

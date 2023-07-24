@@ -10,13 +10,14 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.patientservice.cotroller.ProviderUiResponse;
 import com.example.patientservice.entity.Patient;
+import com.example.patientservice.entity.ReferringProvider;
 import com.example.patientservice.service.ExternalService;
 import com.example.patientservice.service.PatientService;
 import com.example.patientservice.service.ReadJsonFileService;
+import com.example.patientservice.service.ReferringProviderService;
 import com.example.patientservice.uiRequest.PatientUiRequest;
-import com.example.patientservice.uiRequest.SearchProviderUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
-import com.example.patientservice.uiResponse.RefferingProviderDemoData;
+import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 import com.example.patientservice.utility.PatientHelper;
 
 
@@ -34,6 +35,9 @@ import com.example.patientservice.utility.PatientHelper;
     
     @Autowired
     ExternalService externalService;
+    
+    @Autowired
+    ReferringProviderService referringService;
 
     public Long createPatient(PatientUiRequest req)
         {
@@ -66,7 +70,11 @@ import com.example.patientservice.utility.PatientHelper;
 
         public PatientUIResponse getPatientDetails(int patientId) {
            Patient p=service.getPatientDetails(patientId);
+           
             PatientUIResponse response=PatientHelper.convertToPatientUiRequest(p);
+            ReferringProvider referringProvider = referringService.getReferringProviderById(p.getReferringProvider());
+            ReferringProviderUiResponse referringProviderUiResponse=PatientHelper.convertToReferringProviderUiResponse(referringProvider);
+            response.setReferringProvider(referringProviderUiResponse);
             return response;
         }
 
@@ -80,11 +88,11 @@ import com.example.patientservice.utility.PatientHelper;
 
         }
 
-		public List<RefferingProviderDemoData> getNpdiDetails() {
+		public List<ReferringProviderUiResponse> getNpdiDetails() {
 			// TODO Auto-generated method stub
 		//	restTemplate.get
 			
-			List<RefferingProviderDemoData> readRefferingProviderJsonFile = new ArrayList<RefferingProviderDemoData>();
+			List<ReferringProviderUiResponse> readRefferingProviderJsonFile = new ArrayList<ReferringProviderUiResponse>();
 			try {
 				readRefferingProviderJsonFile= jsonService.readRefferingProviderJsonFile();
 			} catch (IOException e) {

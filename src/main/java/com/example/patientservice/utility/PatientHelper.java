@@ -12,6 +12,7 @@ import com.example.patientservice.uiRequest.ReferringProviderUiRequest;
 import com.example.patientservice.uiResponse.EmergencyContactUiResponse;
 import com.example.patientservice.uiResponse.MedicalHistoryUiResponse;
 import com.example.patientservice.uiResponse.PatientUIResponse;
+import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 
 public class PatientHelper {
 	public static Patient convertPatientRequest(PatientUiRequest req) {
@@ -51,7 +52,8 @@ public class PatientHelper {
 		p.setMaritalStatus(req.getMaritalStatus());
 		p.setOutStandingBalance(req.getOutStandingBalance());
 		p.setProfileImage(req.getProfileImage());
-
+		p.setReferringProvider(req.getReferringProviderId());
+		
 	/*	List<MedicalHistory> medicalHistories = new ArrayList<MedicalHistory>();
 		List<MedicalHistoryUiRequest> medicalHistoryUiRequests = req.getMedicalHistory();
 		if (medicalHistoryUiRequests != null) {
@@ -67,7 +69,7 @@ public class PatientHelper {
 			p.setMedicalHistory(medicalHistories);
 
 		}*/
-		ReferringProviderUiRequest referringProviderUiRequest = req.getReferringProvider();
+		/*ReferringProviderUiRequest referringProviderUiRequest = req.getReferringProvider();
 		ReferringProvider referringProvider=new ReferringProvider();
 		referringProvider.setNpi(referringProviderUiRequest.getNpi());
 		referringProvider.setProviderLastName(referringProviderUiRequest.getProviderLastName());
@@ -76,7 +78,7 @@ public class PatientHelper {
 		referringProvider.setSpecialty(referringProviderUiRequest.getSpecialty());
 		referringProvider.setOrganisationName(referringProviderUiRequest.getOrganisationName());
 
-		p.setReferringProvider(referringProvider);
+		p.setReferringProvider(referringProvider);*/
 		List<EmergencyContact> emergencyContacts = new ArrayList<EmergencyContact>();
 		List<EmergencyContactUiRequest> emergencyContactsUiRequests = req.getEmergencyContacts();
 		if(emergencyContactsUiRequests!=null)
@@ -185,5 +187,18 @@ public class PatientHelper {
 		}
 	
 		return listOfPatientUiResponse;
+	}
+
+	public static ReferringProviderUiResponse convertToReferringProviderUiResponse(
+			ReferringProvider referringProvider) {
+		
+		ReferringProviderUiResponse resp= new ReferringProviderUiResponse();
+		resp.setNPI(referringProvider.getNpi());
+		resp.setNpiType(referringProvider.getNpiType());
+		resp.setOrganisationName(referringProvider.getOrganisationName());
+		resp.setProviderFirstName(referringProvider.getProviderFirstName());
+		resp.setProviderLastName(referringProvider.getProviderLastName());
+		resp.setSpecialty(referringProvider.getSpecialty());
+		return resp;
 	}
 }

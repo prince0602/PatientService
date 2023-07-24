@@ -1,6 +1,6 @@
 package com.example.patientservice.uiResponse;
 
-public class RefferingProviderDemoData {
+public class ReferringProviderUiResponse {
 	private String npi;
     private String npiType;
     private String specialty;

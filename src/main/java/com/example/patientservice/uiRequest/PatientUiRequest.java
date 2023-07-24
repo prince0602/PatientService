@@ -44,17 +44,17 @@ public class PatientUiRequest {
 	private double outStandingBalance;
 	private String profileImage;
 	private List<EmergencyContactUiRequest> emergencyContacts;
+	private String referringProviderId;
 
-	private ReferringProviderUiRequest referringProvider;
 
 	
 
-	public ReferringProviderUiRequest getReferringProvider() {
-		return referringProvider;
+	public String getReferringProviderId() {
+		return referringProviderId;
 	}
 
-	public void setReferringProvider(ReferringProviderUiRequest referringProvider) {
-		this.referringProvider = referringProvider;
+	public void setReferringProviderId(String referringProviderId) {
+		this.referringProviderId = referringProviderId;
 	}
 
 	public List<MedicalHistoryUiRequest> getMedicalHistoryUiRequests() {
@@ -84,10 +84,6 @@ public class PatientUiRequest {
 	public void setImageData(byte[] imageData) {
 		this.imageData = imageData;
 	}
-
-	
-
-	
 
 	public String getGender() {
 		return gender;

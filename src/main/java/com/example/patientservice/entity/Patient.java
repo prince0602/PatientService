@@ -14,7 +14,8 @@ public class Patient {
     @Column(name = "patientId")
     private Long patientId;
     
-   
+    private String npiId;
+	
 	private int accountNo;
 	private String prefix;
 	private String lastName;
@@ -36,7 +37,7 @@ public class Patient {
 	private String ssn;
 	private String primaryPhoneNumber;
 	private String 	secondaryPhoneNumber;
-	private  String releaseOfInfo;
+	private String releaseOfInfo;
 	private String empStatus;
 	private String ethnicity;
 	private String language;
@@ -49,15 +50,25 @@ public class Patient {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
 	private List<EmergencyContact> emergencyContact;
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
-	private ReferringProvider referringProvider;
+	
+	
+	
+	private String referringProvider;
+	
+	
+	public String getNpiId() {
+		return npiId;
+	}
 
-	public ReferringProvider getReferringProvider() {
+	public void setNpiId(String npiId) {
+		this.npiId = npiId;
+	}
+
+	public String getReferringProvider() {
 		return referringProvider;
 	}
 
-	public void setReferringProvider(ReferringProvider referringProvider) {
+	public void setReferringProvider(String  referringProvider) {
 		this.referringProvider = referringProvider;
 	}
 

@@ -17,7 +17,7 @@ import com.example.patientservice.bl.PatientBl;
 import com.example.patientservice.uiRequest.PatientUiRequest;
 import com.example.patientservice.uiRequest.SearchProviderUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
-import com.example.patientservice.uiResponse.RefferingProviderDemoData;
+import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -52,7 +52,7 @@ public class PatientController {
 	}
 	
 	@GetMapping("/getAllRefferal")
-	public List<RefferingProviderDemoData> getNpdiResponse()
+	public List<ReferringProviderUiResponse> getNpdiResponse()
 	{
 		return bl.getNpdiDetails();
 	}
@@ -62,5 +62,7 @@ public class PatientController {
 	{
 		return bl.searchProvider(npiNumber);
 	}
+	
+	
 
 }

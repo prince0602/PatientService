@@ -9,7 +9,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
-import com.example.patientservice.uiResponse.RefferingProviderDemoData;
+import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -23,9 +23,9 @@ public class ReadJsonFileService {
         this.resourceLoader = resourceLoader;
     }
 
-    public List<RefferingProviderDemoData> readRefferingProviderJsonFile() throws IOException {
+    public List<ReferringProviderUiResponse> readRefferingProviderJsonFile() throws IOException {
         Resource resource = resourceLoader.getResource("classpath:data/refferingProvider.json");
-        RefferingProviderDemoData[] readValue = objectMapper.readValue(resource.getInputStream(), RefferingProviderDemoData[].class);
+        ReferringProviderUiResponse[] readValue = objectMapper.readValue(resource.getInputStream(), ReferringProviderUiResponse[].class);
         return Arrays.asList(readValue);
     }
 }

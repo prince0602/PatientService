@@ -6,7 +6,16 @@ import jakarta.persistence.*;
 public class ReferringProvider {
 
     @Id
-    private String npi;
+    private String referringProviderId;
+    public String getReferringProviderId() {
+		return referringProviderId;
+	}
+
+	public void setReferringProviderId(String referringProviderId) {
+		this.referringProviderId = referringProviderId;
+	}
+
+	private String npi;
     private String npiType;
     private String specialty;
     private String providerFirstName;
