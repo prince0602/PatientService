@@ -47,12 +47,63 @@ public class Patient {
 	private String maritalStatus;
 	private double outStandingBalance;
 	private String profileImage;
+	
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
 	private List<EmergencyContact> emergencyContact;
 	
+	private String emailPermission;
+	private String textPermission;
+	private String voicePermission;
+	private String preferredModeOfCommunication;
+	
+    @Column(nullable = false, columnDefinition = "boolean default true")
+	private boolean selfResponsibleFlag;
+
 	
 	
+	
+	public boolean getSelfResponsibleFlag() {
+		return selfResponsibleFlag;
+	}
+
+	public void setSelfResponsibleFlag(boolean selfResponsibleFlag) {
+		this.selfResponsibleFlag = selfResponsibleFlag;
+	}
+
+	public String getEmailPermission() {
+		return emailPermission;
+	}
+
+	public void setEmailPermission(String emailPermission) {
+		this.emailPermission = emailPermission;
+	}
+
+	public String getTextPermission() {
+		return textPermission;
+	}
+
+	public void setTextPermission(String textPermission) {
+		this.textPermission = textPermission;
+	}
+
+	public String getVoicePermission() {
+		return voicePermission;
+	}
+
+	public void setVoicePermission(String voicePermission) {
+		this.voicePermission = voicePermission;
+	}
+
+	public String getPreferredModeOfCommunication() {
+		return preferredModeOfCommunication;
+	}
+
+	public void setPreferredModeOfCommunication(String preferredModeOfCommunication) {
+		this.preferredModeOfCommunication = preferredModeOfCommunication;
+	}
+
 	private String referringProvider;
 	
 	

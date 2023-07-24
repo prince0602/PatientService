@@ -11,15 +11,16 @@ import jakarta.persistence.Lob;
 @Component
 public class PatientUiRequest {
 	
-	
-	private byte[] imageData;
 	private int accountNo;
+	private byte[] imageData;
+	
 	private String prefix;
 	private String lastName;
 	private String suffix;
 	private String firstName;
 	private String middleName;
 	private String preferredName;
+	
 	private String addressLine1;
 	private String addressLine2;
 	private String city;
@@ -27,6 +28,7 @@ public class PatientUiRequest {
 	private String county;
 	private String zip;
 	private String country;
+	
 	private String email;
 	private LocalDate dateOfBirth;
 	private String ssn;
@@ -44,10 +46,60 @@ public class PatientUiRequest {
 	private double outStandingBalance;
 	private String profileImage;
 	private List<EmergencyContactUiRequest> emergencyContacts;
+	
+	
 	private String referringProviderId;
+	
+	
+	private boolean selfResponsibleFlag;
+	
+	private String emailPermission;
+	private String textPermission;
+	private String voicePermission;
+	private String preferredModeOfCommunication;
 
 
 	
+
+	public String getEmailPermission() {
+		return emailPermission;
+	}
+
+	public void setEmailPermission(String emailPermission) {
+		this.emailPermission = emailPermission;
+	}
+
+	public String getTextPermission() {
+		return textPermission;
+	}
+
+	public void setTextPermission(String textPermission) {
+		this.textPermission = textPermission;
+	}
+
+	public String getVoicePermission() {
+		return voicePermission;
+	}
+
+	public void setVoicePermission(String voicePermission) {
+		this.voicePermission = voicePermission;
+	}
+
+	public String getPreferredModeOfCommunication() {
+		return preferredModeOfCommunication;
+	}
+
+	public void setPreferredModeOfCommunication(String preferredModeOfCommunication) {
+		this.preferredModeOfCommunication = preferredModeOfCommunication;
+	}
+
+	public boolean  getSelfResponsibleFlag() {
+		return selfResponsibleFlag;
+	}
+
+	public void setSelfResponsibleFlag(boolean selfResponsibleFlag) {
+		this.selfResponsibleFlag = selfResponsibleFlag;
+	}
 
 	public String getReferringProviderId() {
 		return referringProviderId;

@@ -101,6 +101,14 @@ public class PatientHelper {
 			}
 		}
 		p.setEmergencyContact(emergencyContacts);
+		
+		
+		
+		p.setSelfResponsibleFlag(req.getSelfResponsibleFlag());
+		p.setPreferredModeOfCommunication(req.getPreferredModeOfCommunication());
+		p.setTextPermission(req.getTextPermission());
+		p.setVoicePermission(req.getVoicePermission());
+		p.setEmailPermission(req.getEmailPermission());
 		return p;
 	}
 
@@ -173,6 +181,12 @@ public class PatientHelper {
 			emergencyContactUiResponse.add(emergencyContactUiResponse1);
 		}
 		uiResponse.setListOfEmergencyContacts(emergencyContactUiResponse);
+		
+		uiResponse.setSelfResponsibleflag(p.getSelfResponsibleFlag());
+		uiResponse.setEmailPermission(p.getEmailPermission());
+		uiResponse.setPreferredModeOfCommunication(p.getPreferredModeOfCommunication());
+		uiResponse.setVoicePermission(p.getVoicePermission());
+		uiResponse.setTextPermission(p.getTextPermission());
 		return uiResponse;
 	}
 

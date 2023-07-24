@@ -42,6 +42,52 @@ public class PatientUIResponse {
     private List<EmergencyContactUiResponse> listOfEmergencyContacts;
     private String profileImage;
     private ReferringProviderUiResponse referringProvider;
+    
+    private boolean selfResponsibleflag;
+	public boolean isSelfResponsibleflag() {
+		return selfResponsibleflag;
+	}
+
+	public void setSelfResponsibleflag(boolean selfResponsibleflag) {
+		this.selfResponsibleflag = selfResponsibleflag;
+	}
+
+	public String getEmailPermission() {
+		return emailPermission;
+	}
+
+	public void setEmailPermission(String emailPermission) {
+		this.emailPermission = emailPermission;
+	}
+
+	public String getTextPermission() {
+		return textPermission;
+	}
+
+	public void setTextPermission(String textPermission) {
+		this.textPermission = textPermission;
+	}
+
+	public String getVoicePermission() {
+		return voicePermission;
+	}
+
+	public void setVoicePermission(String voicePermission) {
+		this.voicePermission = voicePermission;
+	}
+
+	public String getPreferredModeOfCommunication() {
+		return preferredModeOfCommunication;
+	}
+
+	public void setPreferredModeOfCommunication(String preferredModeOfCommunication) {
+		this.preferredModeOfCommunication = preferredModeOfCommunication;
+	}
+
+	private String emailPermission;
+	private String textPermission;
+	private String voicePermission;
+	private String preferredModeOfCommunication;
 
     public ReferringProviderUiResponse getReferringProvider() {
 		return referringProvider;
