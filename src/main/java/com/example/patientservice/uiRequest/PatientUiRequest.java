@@ -46,11 +46,9 @@ public class PatientUiRequest {
 	private double outStandingBalance;
 	private String profileImage;
 	private List<EmergencyContactUiRequest> emergencyContacts;
-	
-	
-	private String referringProviderId;
-	
-	
+		
+	private String npi;
+
 	private boolean selfResponsibleFlag;
 	
 	private String emailPermission;
@@ -60,6 +58,13 @@ public class PatientUiRequest {
 
 
 	
+	public String getNpi() {
+		return npi;
+	}
+	
+	public void setNpi(String npi) {
+		this.npi = npi;
+	}
 
 	public String getEmailPermission() {
 		return emailPermission;
@@ -99,14 +104,6 @@ public class PatientUiRequest {
 
 	public void setSelfResponsibleFlag(boolean selfResponsibleFlag) {
 		this.selfResponsibleFlag = selfResponsibleFlag;
-	}
-
-	public String getReferringProviderId() {
-		return referringProviderId;
-	}
-
-	public void setReferringProviderId(String referringProviderId) {
-		this.referringProviderId = referringProviderId;
 	}
 
 	public List<MedicalHistoryUiRequest> getMedicalHistoryUiRequests() {

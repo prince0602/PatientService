@@ -72,7 +72,7 @@ import com.example.patientservice.utility.PatientHelper;
            Patient p=service.getPatientDetails(patientId);
            
             PatientUIResponse response=PatientHelper.convertToPatientUiRequest(p);
-            ReferringProvider referringProvider = referringService.getReferringProviderById(p.getReferringProvider());
+            ReferringProvider referringProvider = referringService.getReferringProviderById(p.getNpiId());
             ReferringProviderUiResponse referringProviderUiResponse=PatientHelper.convertToReferringProviderUiResponse(referringProvider);
             response.setReferringProvider(referringProviderUiResponse);
             return response;
