@@ -52,7 +52,7 @@ public class PatientHelper {
 		p.setMaritalStatus(req.getMaritalStatus());
 		p.setOutStandingBalance(req.getOutStandingBalance());
 		p.setProfileImage(req.getProfileImage());
-		p.setReferringProvider(req.getReferringProviderId());
+		p.setNpiId(req.getNpi());
 		
 	/*	List<MedicalHistory> medicalHistories = new ArrayList<MedicalHistory>();
 		List<MedicalHistoryUiRequest> medicalHistoryUiRequests = req.getMedicalHistory();

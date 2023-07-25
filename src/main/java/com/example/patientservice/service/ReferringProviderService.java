@@ -11,9 +11,9 @@ public class ReferringProviderService {
 	@Autowired
 	ReferringProviderRepository repo;
 	
-	public ReferringProvider getReferringProviderById(String referringProviderId)
+	public ReferringProvider getReferringProviderById(String npi)
 	{
-		return repo.findById(referringProviderId).orElse(null);
+		return repo.findByNpi(npi).orElse(null);
 	}
 
 	public String addReferringProvider(ReferringProvider referringProvider) {

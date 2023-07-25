@@ -15,7 +15,9 @@ public class Patient {
     private Long patientId;
     
     private String npiId;
-	
+
+
+
 	private int accountNo;
 	private String prefix;
 	private String lastName;
@@ -61,9 +63,11 @@ public class Patient {
     @Column(nullable = false, columnDefinition = "boolean default true")
 	private boolean selfResponsibleFlag;
 
-	
-	
-	
+
+
+	public boolean isSelfResponsibleFlag() {
+		return selfResponsibleFlag;
+	}
 	public boolean getSelfResponsibleFlag() {
 		return selfResponsibleFlag;
 	}
@@ -103,10 +107,7 @@ public class Patient {
 	public void setPreferredModeOfCommunication(String preferredModeOfCommunication) {
 		this.preferredModeOfCommunication = preferredModeOfCommunication;
 	}
-
-	private String referringProvider;
-	
-	
+		
 	public String getNpiId() {
 		return npiId;
 	}
@@ -115,13 +116,6 @@ public class Patient {
 		this.npiId = npiId;
 	}
 
-	public String getReferringProvider() {
-		return referringProvider;
-	}
-
-	public void setReferringProvider(String  referringProvider) {
-		this.referringProvider = referringProvider;
-	}
 
 	public Long getPatientId() {
 		return patientId;
