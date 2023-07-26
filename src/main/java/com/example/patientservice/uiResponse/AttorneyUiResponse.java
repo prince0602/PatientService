@@ -3,18 +3,16 @@ package com.example.patientservice.uiResponse;
 import lombok.Data;
 
 @Data
-public class EmergencyContactUiResponse {
+public class AttorneyUiResponse {
     private String firstName;
     private String lastName;
-    private String relation;
-    private String phoneNumber;
-    private String ext;
-    private String addressLine1;
-    private String addressLine2;
+    private String phone;
+    private String officeAdd;
     private String city;
     private String state;
     private String zipCode;
     private String country;
+    private String notes;
 
 
 }

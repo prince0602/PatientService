@@ -24,7 +24,7 @@ public class PatientService {
             return null;
         }
         else{
-            return p.getId();
+            return p.getPatientId();
         }
     }
 

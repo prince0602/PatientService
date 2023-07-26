@@ -1,5 +1,8 @@
 package com.example.patientservice.uiRequest;
 
+import lombok.Data;
+
+@Data
 public class ReferringProviderUiRequest {
 
     private String npi;
@@ -9,6 +12,7 @@ public class ReferringProviderUiRequest {
     private String providerLastName;
     private String organisationName;
 
+<<<<<<< Updated upstream
     public ReferringProviderUiRequest(String npi, String npiType, String specialty, String providerFirstName, String providerLastName, String organisationName) {
         this.npi = npi;
         this.npiType = npiType;
@@ -65,4 +69,7 @@ public class ReferringProviderUiRequest {
     public void setOrganisationName(String organisationName) {
         this.organisationName = organisationName;
     }
+=======
+
+>>>>>>> Stashed changes
 }
