@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.patientservice.entity.Patient;
-import com.example.patientservice.entity.ReferringProvider;
+import com.example.patientservice.entity.PatientEntity;
+import com.example.patientservice.entity.ReferringProviderEntity;
 import com.example.patientservice.service.ExternalService;
 import com.example.patientservice.service.PatientService;
 import com.example.patientservice.service.ReadJsonFileService;
@@ -20,114 +20,81 @@ import com.example.patientservice.uiResponse.PatientUIResponse;
 import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 import com.example.patientservice.utility.PatientHelper;
 
-
 @Component
-    public class PatientBl {
-     
-    @Autowired
-    PatientService service;
-    
-    @Autowired
-    ReadJsonFileService jsonService;
-    
-    @Autowired
-    RestTemplate restTemplate;
-    
-    @Autowired
-    ExternalService externalService;
-    
-    @Autowired
-    ReferringProviderService referringService;
+public class PatientBl {
 
-    public Long createPatient(PatientUiRequest req)
-        {
+	@Autowired
+	PatientService service;
 
-            Patient p = PatientHelper.convertPatientRequest(req);
-//            if (req.getImageFile() != null && !req.getImageFile().isEmpty()) {
-//                try {
-//                    p.setImage(req.getImageFile().getBytes());
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-            Long patId=service.createPatient(p);
-            return patId;
-            //return null;
-        }
+	@Autowired
+	ReadJsonFileService jsonService;
 
-		/*
-		 * public ResponseEntity<String> updatePatientDetails(@PathVariable("patientId")
-		 * Long patientId, @RequestBody PatientUiRequest updatedPatient) {
-		 * Optional<Patient>
-		 * optionalPatient=patientRepo.findById(Math.toIntExact(patientId));
-		 * if(optionalPatient.isPresent()){ Patient patient=optionalPatient.get();
-		 * //patient.setPhone(updatedPatient.getPhone());
-		 * patient.setEmail(updatedPatient.getEmail()); patientRepo.save(patient);
-		 * return ResponseEntity.ok("Patient details updated successfully"); } else{
-		 * return ResponseEntity.notFound().build(); }
-		 */
-        
+	@Autowired
+	RestTemplate restTemplate;
 
-        public PatientUIResponse getPatientDetails(int patientId) {
-           Patient p=service.getPatientDetails(patientId);
-           
-            PatientUIResponse response=PatientHelper.convertToPatientUiResponse(p);
-            ReferringProvider referringProvider = referringService.getReferringProviderById(p.getNpiId());
-            ReferringProviderUiResponse referringProviderUiResponse=PatientHelper.convertToReferringProviderUiResponse(referringProvider);
-            response.setReferringProvider(referringProviderUiResponse);
-            return response;
-        }
+	@Autowired
+	ExternalService externalService;
 
-		public List<PatientUIResponse> getAllPatients() {
-			// TODO Auto-generated method stub
-			List<Patient> patients =service.getAllPatients();
-			List<PatientUIResponse> listOfPatients=PatientHelper.convertToPatientListUiResponse(patients);
-			return listOfPatients;
-		}
-        public void savePatientPicture(){
+	@Autowired
+	ReferringProviderService referringService;
 
-        }
+	public Long createPatient(PatientUiRequest req) {
 
-		public List<ReferringProviderUiResponse> getNpdiDetails() {
-			// TODO Auto-generated method stub
-		//	restTemplate.get
-			
-			List<ReferringProviderUiResponse> readRefferingProviderJsonFile = new ArrayList<ReferringProviderUiResponse>();
-			try {
-				readRefferingProviderJsonFile= jsonService.readRefferingProviderJsonFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return readRefferingProviderJsonFile;
+		PatientEntity p = PatientHelper.convertPatientRequest(req);
+		Long patId = service.createPatient(p);
+		return patId;
 		}
 
-		public String searchProvider(String npiNumber) {
-			// TODO Auto-generated method stub
-			String result=externalService.callApi(npiNumber);
-			
-			return null;
-		}
+	public PatientUIResponse getPatientDetails(int patientId) {
 
-		public String addReferringProvider(ReferringProviderUiRequest req) {
-			// TODO Auto-generated method stub
-			
-			ReferringProvider referringProvider =PatientHelper.conertFromReferringProviderUiRequest(req);
-			return referringService.addReferringProvider(referringProvider);
-			
+		PatientEntity p = service.getPatientDetails(patientId);
+
+		PatientUIResponse response = PatientHelper.convertToPatientUiResponse(p);
+		ReferringProviderEntity referringProvider = referringService.getReferringProviderById(p.getNpiId());
+		ReferringProviderUiResponse referringProviderUiResponse = PatientHelper
+				.convertToReferringProviderUiResponse(referringProvider);
+		response.setReferringProvider(referringProviderUiResponse);
+		return response;
+	}
+
+	public List<PatientUIResponse> getAllPatients() {
+
+		List<PatientEntity> patients = service.getAllPatients();
+		List<PatientUIResponse> listOfPatients = PatientHelper.convertToPatientListUiResponse(patients);
+		return listOfPatients;
+	}
+
+	public List<ReferringProviderUiResponse> getNpdiDetails() {
+
+		List<ReferringProviderUiResponse> readRefferingProviderJsonFile = new ArrayList<ReferringProviderUiResponse>();
+		try {
+			readRefferingProviderJsonFile = jsonService.readRefferingProviderJsonFile();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		public boolean updatePatient(int patientId, PatientUiRequest req) {
-	        Patient existingPatient = service.getPatientDetails(patientId);
-	        if (existingPatient != null) {
-	            Patient updatedPatient = PatientHelper.convertPatientRequestForUpdate(existingPatient, req);
-	            return service.updatePatient(updatedPatient);
-	        }
-	        return false;
-	    }
+		return readRefferingProviderJsonFile;
+	}
+
+	public String searchProvider(String npiNumber) {
+		String result = externalService.callApi(npiNumber);
+
+		return null;
+	}
+
+	public String addReferringProvider(ReferringProviderUiRequest req) {
+
+		ReferringProviderEntity referringProvider = PatientHelper.conertFromReferringProviderUiRequest(req);
+		return referringService.addReferringProvider(referringProvider);
+
+	}
+
+	public boolean updatePatient(int patientId, PatientUiRequest req) {
+		PatientEntity existingPatient = service.getPatientDetails(patientId);
+		if (existingPatient != null) {
+			PatientEntity updatedPatient = PatientHelper.convertPatientRequestForUpdate(existingPatient, req);
+			return service.updatePatient(updatedPatient);
+		}
+		return false;
+	}
 
 }
-
-
-
-

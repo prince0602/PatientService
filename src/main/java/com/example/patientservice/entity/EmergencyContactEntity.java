@@ -10,11 +10,13 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
-public class EmergencyContact {
+@NoArgsConstructor
+public class EmergencyContactEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,12 +33,4 @@ public class EmergencyContact {
 	private String state;
 	private String zipCode;
 	private String country;
-
-	public EmergencyContact() {
-
-	}
-
-	
-
-
 }

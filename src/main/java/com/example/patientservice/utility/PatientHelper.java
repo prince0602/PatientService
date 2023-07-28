@@ -3,10 +3,10 @@ package com.example.patientservice.utility;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.patientservice.entity.Attorney;
-import com.example.patientservice.entity.EmergencyContact;
-import com.example.patientservice.entity.Patient;
-import com.example.patientservice.entity.ReferringProvider;
+import com.example.patientservice.entity.AttorneyEntity;
+import com.example.patientservice.entity.EmergencyContactEntity;
+import com.example.patientservice.entity.PatientEntity;
+import com.example.patientservice.entity.ReferringProviderEntity;
 import com.example.patientservice.uiRequest.AttorneyUiRequest;
 import com.example.patientservice.uiRequest.EmergencyContactUiRequest;
 import com.example.patientservice.uiRequest.PatientUiRequest;
@@ -20,10 +20,9 @@ import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 
 
 public class PatientHelper {
-	public static Patient convertPatientRequest(PatientUiRequest req) {
-		Patient p = new Patient();
+	public static PatientEntity convertPatientRequest(PatientUiRequest req) {
+		PatientEntity p = new PatientEntity();
 		
-		//p.setProfileImage(ImageHelper.compressImage(req.getImageData()));
 		p.setPatientId(req.getPatientId());
 		p.setAccountNo(req.getAccountNo());
 		p.setPrefix(req.getPrefix());
@@ -61,12 +60,12 @@ public class PatientHelper {
 		
 
 
-		List<EmergencyContact> emergencyContacts = new ArrayList<>();
+		List<EmergencyContactEntity> emergencyContacts = new ArrayList<>();
 		List<EmergencyContactUiRequest> emergencyContactsUiRequests = req.getEmergencyContacts();
 
 		if (emergencyContactsUiRequests != null) {
 			for (EmergencyContactUiRequest emergencyContact : emergencyContactsUiRequests) {
-				EmergencyContact contact = EmergencyContact.builder()
+				EmergencyContactEntity contact = EmergencyContactEntity.builder()
 						.addressLine1(emergencyContact.getAddressLine1())
 						.addressLine2(emergencyContact.getAddressLine2())
 						.city(emergencyContact.getCity())
@@ -87,11 +86,11 @@ public class PatientHelper {
 		p.setEmergencyContact(emergencyContacts);
 
 
-		List<Attorney> attorneys=new ArrayList<Attorney>();
+		List<AttorneyEntity> attorneys=new ArrayList<AttorneyEntity>();
 		List<AttorneyUiRequest> attorneyUiRequests=req.getAttorneyUiRequests();
 		if(attorneyUiRequests!=null){
 			for(AttorneyUiRequest attorneyUiRequest:attorneyUiRequests){
-				Attorney attorney=new Attorney();
+				AttorneyEntity attorney=new AttorneyEntity();
 				attorney.setAttorneyId(attorneyUiRequest.getAttorneyId());
 				attorney.setCity(attorneyUiRequest.getCity());
 				attorney.setCountry(attorneyUiRequest.getCountry());
@@ -117,7 +116,7 @@ public class PatientHelper {
 		return p;
 	}
 
-	public static PatientUIResponse convertToPatientUiResponse(Patient p) {
+	public static PatientUIResponse convertToPatientUiResponse(PatientEntity p) {
 		PatientUIResponse uiResponse = new PatientUIResponse();
 
 		uiResponse.setEmail(p.getEmail());
@@ -162,29 +161,31 @@ public class PatientHelper {
 
 
 
-		List<EmergencyContact> emergencyContacts=p.getEmergencyContact();
+		List<EmergencyContactEntity> emergencyContacts=p.getEmergencyContact();
 		List<EmergencyContactUiResponse> emergencyContactUiResponse=new ArrayList<EmergencyContactUiResponse>();
-		for(EmergencyContact emergencyContact:emergencyContacts){
-			EmergencyContactUiResponse.builder()
-					.city(emergencyContact.getCity())
-					.ext(emergencyContact.getExt())
-					.country(emergencyContact.getCountry())
-					.state(emergencyContact.getState())
-					.relation(emergencyContact.getRelation())
-					.addressLine1(emergencyContact.getAddressLine1())
-					.addressLine2(emergencyContact.getAddressLine2())
-					.firstName(emergencyContact.getFirstName())
-					.lastName(emergencyContact.getLastName())
-					.phoneNumber(emergencyContact.getPhoneNumber())
-					.zipCode(emergencyContact.getZipCode())
-					.build();
+		for(EmergencyContactEntity emergencyContact:emergencyContacts){
+			EmergencyContactUiResponse response = new EmergencyContactUiResponse();
+			response.setAddressLine1(emergencyContact.getAddressLine1());			        
+			response.setCity(emergencyContact.getCity());
+			response.setExt(emergencyContact.getExt());
+			response.setCountry(emergencyContact.getCountry());
+			response.setState(emergencyContact.getState());
+			response.setRelation(emergencyContact.getRelation());
+			response.setAddressLine2(emergencyContact.getAddressLine2());
+			response.setFirstName(emergencyContact.getFirstName());
+			response.setLastName(emergencyContact.getLastName());
+			response.setPhoneNumber(emergencyContact.getPhoneNumber());
+			response.setZipCode(emergencyContact.getZipCode());
+			emergencyContactUiResponse.add(response);
+			
+			
 
 		}
 		uiResponse.setEmergencyContacts(emergencyContactUiResponse);
 
-				List<Attorney> attorneyList=p.getAttorneys();
+				List<AttorneyEntity> attorneyList=p.getAttorneys();
 		List<AttorneyUiResponse> attorneyUiResponses=new ArrayList<AttorneyUiResponse>();
-		for(Attorney attorney:attorneyList){
+		for(AttorneyEntity attorney:attorneyList){
 			AttorneyUiResponse attorneyUiResponse=new AttorneyUiResponse();
 			attorneyUiResponse.setCity(attorney.getCity());
 			attorneyUiResponse.setState(attorney.getState());
@@ -203,10 +204,10 @@ public class PatientHelper {
 		return uiResponse;
 	}
 
-	public static List<PatientUIResponse> convertToPatientListUiResponse(List<Patient> listOfPatients) {
+	public static List<PatientUIResponse> convertToPatientListUiResponse(List<PatientEntity> listOfPatients) {
 		// TODO Auto-generated method stub
 		List<PatientUIResponse> listOfPatientUiResponse= new ArrayList<PatientUIResponse>();
-		for(Patient p:listOfPatients)
+		for(PatientEntity p:listOfPatients)
 		{
 			PatientUIResponse patientUIResponse= convertToPatientUiResponse(p);
 			listOfPatientUiResponse.add(patientUIResponse);
@@ -217,7 +218,7 @@ public class PatientHelper {
 	}
 
 	public static ReferringProviderUiResponse convertToReferringProviderUiResponse(
-			ReferringProvider referringProvider) {
+			ReferringProviderEntity referringProvider) {
 		
 		if(referringProvider!=null){
 			ReferringProviderUiResponse resp= new ReferringProviderUiResponse();
@@ -232,9 +233,9 @@ public class PatientHelper {
 		return null;
 	}
 
-	public static ReferringProvider conertFromReferringProviderUiRequest(ReferringProviderUiRequest req) {
+	public static ReferringProviderEntity conertFromReferringProviderUiRequest(ReferringProviderUiRequest req) {
 		// TODO Auto-generated method stub
-		ReferringProvider referringProvider = new ReferringProvider();
+		ReferringProviderEntity referringProvider = new ReferringProviderEntity();
 		referringProvider.setNpi(req.getNpi());
 		referringProvider.setNpiType(req.getNpiType());
 		referringProvider.setOrganisationName(req.getOrganisationName());
@@ -245,7 +246,7 @@ public class PatientHelper {
 		return referringProvider;
 	}
 	
-	public static Patient convertPatientRequestForUpdate(Patient existingPatient, PatientUiRequest req) {
+	public static PatientEntity convertPatientRequestForUpdate(PatientEntity existingPatient, PatientUiRequest req) {
         
         existingPatient.setAccountNo(req.getAccountNo());
         existingPatient.setPrefix(req.getPrefix());
@@ -284,12 +285,12 @@ public class PatientHelper {
         existingPatient.setPreferredModeOfCommunication(req.getPreferredModeOfCommunication());
 
         // Update emergency contacts
-        List<EmergencyContact> existingEmergencyContacts = existingPatient.getEmergencyContact();
+        List<EmergencyContactEntity> existingEmergencyContacts = existingPatient.getEmergencyContact();
         List<EmergencyContactUiRequest> emergencyContactsUiRequests = req.getEmergencyContacts();
         if (emergencyContactsUiRequests != null) {
             existingEmergencyContacts.clear(); // Remove existing emergency contacts
             for (EmergencyContactUiRequest emergencyContact : emergencyContactsUiRequests) {
-                EmergencyContact contact = new EmergencyContact();
+                EmergencyContactEntity contact = new EmergencyContactEntity();
                 contact.setAddressLine1(emergencyContact.getAddressLine1());
                 contact.setAddressLine2(emergencyContact.getAddressLine2());
                 contact.setCity(emergencyContact.getCity());

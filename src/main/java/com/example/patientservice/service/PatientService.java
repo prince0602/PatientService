@@ -1,6 +1,6 @@
 package com.example.patientservice.service;
 
-import com.example.patientservice.entity.Patient;
+import com.example.patientservice.entity.PatientEntity;
 import com.example.patientservice.repository.PatientRepo;
 
 import java.io.IOException;
@@ -15,44 +15,35 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class PatientService {
-    @Autowired
-    PatientRepo patientRepo;
+	@Autowired
+	PatientRepo patientRepo;
 
-    public Long createPatient(Patient patient){
-        Patient p=patientRepo.save(patient);
-        if(p==null){
-            return null;
-        }
-        else{
-            return p.getPatientId();
-        }
-    }
+	public Long createPatient(PatientEntity patient) {
+		PatientEntity p = patientRepo.save(patient);
+		if (p == null) {
+			return null;
+		} else {
+			return p.getPatientId();
+		}
+	}
 
-    public Patient getPatientDetails(int patientId) {
-        Patient p=patientRepo.getById(patientId);
-        if(p!=null){
-            return p;
-        }
-        return null;
-    }
+	public PatientEntity getPatientDetails(int patientId) {
+		PatientEntity p = patientRepo.getById(patientId);
+		if (p != null) {
+			return p;
+		}
+		return null;
+	}
 
-	public List<Patient> getAllPatients() {
+	public List<PatientEntity> getAllPatients() {
 		// TODO Auto-generated method stub
 		return patientRepo.findAll();
-		
+
 	}
-	
-	public boolean updatePatient(Patient patient) {
-        Patient updatedPatient = patientRepo.save(patient);
-        return updatedPatient != null;
-    }
-//    public void savePatientPicture(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
-//
-//        Patient patient = patientRepo.findById(Math.toIntExact(id)).orElseThrow(() -> new EntityNotFoundException("Patient not found"));
-//
-//        patient.setPicture(file.getBytes());
-//
-//        patientRepo.save(patient);
-//
-//    }
+
+	public boolean updatePatient(PatientEntity patient) {
+		PatientEntity updatedPatient = patientRepo.save(patient);
+		return updatedPatient != null;
+	}
+
 }

@@ -3,10 +3,12 @@ package com.example.patientservice.entity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-public class Attorney {
+@NoArgsConstructor
+public class AttorneyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long AttorneyId;
@@ -20,10 +22,7 @@ public class Attorney {
     private String country;
     private String notes;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Patient patient;
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    private PatientEntity patient;
 
-    public Attorney() {
-
-    }
 }

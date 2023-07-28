@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity
 @Data
 
-public class Patient {
+public class PatientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "patientId")
@@ -62,10 +62,10 @@ public class Patient {
 	private String preferredModeOfCommunication;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
-	private List<EmergencyContact> emergencyContact;
+	private List<EmergencyContactEntity> emergencyContact;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Attorney> attorneys;
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private List<AttorneyEntity> attorneys;
 
 
 }
