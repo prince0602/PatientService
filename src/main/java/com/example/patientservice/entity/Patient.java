@@ -4,10 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
 @Data
+
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,14 +64,8 @@ public class Patient {
 	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
 	private List<EmergencyContact> emergencyContact;
 
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "patientId")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Attorney> attorneys;
-	
-
-
-
-
 
 
 }

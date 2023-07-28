@@ -55,6 +55,7 @@ public class PatientUiRequest {
 	private String textPermission;
 	private String voicePermission;
 	private String preferredModeOfCommunication;
+	private Long PatientId;
 
 
 }

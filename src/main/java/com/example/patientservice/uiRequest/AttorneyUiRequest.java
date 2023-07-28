@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class AttorneyUiRequest {
+    private Long attorneyId;
     private String firstName;
     private String lastName;
     private String phone;

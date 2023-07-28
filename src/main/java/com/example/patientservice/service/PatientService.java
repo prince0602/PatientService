@@ -41,6 +41,11 @@ public class PatientService {
 		return patientRepo.findAll();
 		
 	}
+	
+	public boolean updatePatient(Patient patient) {
+        Patient updatedPatient = patientRepo.save(patient);
+        return updatedPatient != null;
+    }
 //    public void savePatientPicture(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
 //
 //        Patient patient = patientRepo.findById(Math.toIntExact(id)).orElseThrow(() -> new EntityNotFoundException("Patient not found"));

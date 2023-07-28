@@ -7,9 +7,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
 public class EmergencyContact {
 
 	@Id
@@ -27,12 +31,11 @@ public class EmergencyContact {
 	private String state;
 	private String zipCode;
 	private String country;
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "patient_id", referencedColumnName = "patientId") private
-	 * Patient patient;
-	 */
+
+	public EmergencyContact() {
+
+	}
+
 	
 
 

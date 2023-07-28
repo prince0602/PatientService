@@ -1,13 +1,13 @@
 package com.example.patientservice.uiRequest;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class EmergencyContactUiRequest {
-	//r First Name(required), Last Name(Required), Relation(Required), 
-	//Phone Number(required), Ext(Optional),
-	//Address Line 1 and 2, City, State, zip Code, Country.
-	
+
+	private Long patientId = 0L;
 	private String firstName;
 	private String lastName;
 	private String relation;

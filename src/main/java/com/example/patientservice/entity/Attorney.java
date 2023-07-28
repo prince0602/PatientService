@@ -1,6 +1,7 @@
 package com.example.patientservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -8,7 +9,6 @@ import lombok.Data;
 public class Attorney {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "patientId")
     private Long AttorneyId;
     private String firstName;
     private String lastName;
@@ -20,5 +20,10 @@ public class Attorney {
     private String country;
     private String notes;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Patient patient;
 
+    public Attorney() {
+
+    }
 }
