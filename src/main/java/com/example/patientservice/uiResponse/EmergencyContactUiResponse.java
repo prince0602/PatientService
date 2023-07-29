@@ -2,6 +2,8 @@ package com.example.patientservice.uiResponse;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
