@@ -163,24 +163,24 @@ public class PatientHelper {
 
 
 		List<EmergencyContact> emergencyContacts=p.getEmergencyContact();
-		List<EmergencyContactUiResponse> emergencyContactUiResponse=new ArrayList<EmergencyContactUiResponse>();
+		List<EmergencyContactUiResponse> emergencyContactUiResponselist=new ArrayList<EmergencyContactUiResponse>();
 		for(EmergencyContact emergencyContact:emergencyContacts){
-			EmergencyContactUiResponse.builder()
-					.city(emergencyContact.getCity())
-					.ext(emergencyContact.getExt())
-					.country(emergencyContact.getCountry())
-					.state(emergencyContact.getState())
-					.relation(emergencyContact.getRelation())
-					.addressLine1(emergencyContact.getAddressLine1())
-					.addressLine2(emergencyContact.getAddressLine2())
-					.firstName(emergencyContact.getFirstName())
-					.lastName(emergencyContact.getLastName())
-					.phoneNumber(emergencyContact.getPhoneNumber())
-					.zipCode(emergencyContact.getZipCode())
-					.build();
-
+			
+			EmergencyContactUiResponse emergencyContactUiResponse = new EmergencyContactUiResponse();
+			emergencyContactUiResponse.setCity(emergencyContact.getCity());
+			emergencyContactUiResponse.setCountry(emergencyContact.getCountry());
+			emergencyContactUiResponse.setExt(emergencyContact.getExt());
+			emergencyContactUiResponse.setState(emergencyContact.getState());
+			emergencyContactUiResponse.setRelation(emergencyContact.getRelation());
+			emergencyContactUiResponse.setAddressLine1(emergencyContact.getAddressLine1());
+			emergencyContactUiResponse.setAddressLine2(emergencyContact.getAddressLine2());
+			emergencyContactUiResponse.setFirstName(emergencyContact.getFirstName());
+			emergencyContactUiResponse.setLastName(emergencyContact.getLastName());
+			emergencyContactUiResponse.setPhoneNumber(emergencyContact.getPhoneNumber());
+			emergencyContactUiResponse.setZipCode(emergencyContact.getZipCode());
+			emergencyContactUiResponselist.add(emergencyContactUiResponse);	
 		}
-		uiResponse.setEmergencyContacts(emergencyContactUiResponse);
+		uiResponse.setEmergencyContacts(emergencyContactUiResponselist);
 
 				List<Attorney> attorneyList=p.getAttorneys();
 		List<AttorneyUiResponse> attorneyUiResponses=new ArrayList<AttorneyUiResponse>();
