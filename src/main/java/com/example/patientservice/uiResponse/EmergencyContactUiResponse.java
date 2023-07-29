@@ -5,6 +5,8 @@ import lombok.Data;
 
 @Data
 @Builder
+    @NoArgsConstructor
+@AllArgsConstructor
 public class EmergencyContactUiResponse {
     private Long patientId = 0L;;
     private String firstName;
