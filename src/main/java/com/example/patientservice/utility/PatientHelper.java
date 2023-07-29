@@ -56,7 +56,10 @@ public class PatientHelper {
 		p.setEmpStatus(req.getEmpStatus());
 		p.setMaritalStatus(req.getMaritalStatus());
 		p.setOutStandingBalance(req.getOutStandingBalance());
-		p.setProfileImage(req.getProfileImage());
+		
+		byte[] convertImagetoByteArray = ImageHelper.convertImagetoByteArray(req.getProfileImage());
+		byte[] compressImageByteArray = ImageHelper.compressImageByteArray(convertImagetoByteArray);
+		p.setProfileImage(compressImageByteArray);
 		p.setNpiId(req.getNpi());
 		
 
@@ -153,7 +156,8 @@ public class PatientHelper {
 		uiResponse.setEmpStatus(p.getEmpStatus());
 		uiResponse.setMaritalStatus(p.getMaritalStatus());
 		uiResponse.setOutStandingBalance(p.getOutStandingBalance());
-		uiResponse.setProfileImage(p.getProfileImage());
+
+		uiResponse.setProfileImage(ImageHelper.convertImageToString(ImageHelper.decompressImageFromByteArray(p.getProfileImage())));
 		uiResponse.setEmailPermission(p.getEmailPermission());
 		uiResponse.setVoicePermission(p.getVoicePermission());
 		uiResponse.setTextPermission(p.getTextPermission());
@@ -245,7 +249,7 @@ public class PatientHelper {
 		return referringProvider;
 	}
 	
-	public static Patient convertPatientRequestForUpdate(Patient existingPatient, PatientUiRequest req) {
+	/*public static Patient convertPatientRequestForUpdate(Patient existingPatient, PatientUiRequest req) {
         
         existingPatient.setAccountNo(req.getAccountNo());
         existingPatient.setPrefix(req.getPrefix());
@@ -305,6 +309,6 @@ public class PatientHelper {
         }
 
         return existingPatient;
-    }
+    }*/
 
 }

@@ -1,12 +1,13 @@
 package com.example.patientservice.utility;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 public class ImageHelper {
 	
-	public static byte[] compressImage(byte[] data) {
+	public static byte[] compressImageByteArray(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setLevel(Deflater.BEST_COMPRESSION);
         deflater.setInput(data);
@@ -27,7 +28,7 @@ public class ImageHelper {
 
 
 
-    public static byte[] decompressImage(byte[] data) {
+    public static byte[] decompressImageFromByteArray(byte[] data) {
         Inflater inflater = new Inflater();
         inflater.setInput(data);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
@@ -42,4 +43,15 @@ public class ImageHelper {
         }
         return outputStream.toByteArray();
     }
+    
+    public static byte[] convertImagetoByteArray(String image) {
+    	return image.getBytes();
+
+    }
+    
+    public static String convertImageToString(byte[] image)
+    {
+    	return Base64.getEncoder().encodeToString(image);
+    }
+
 }
