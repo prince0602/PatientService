@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ReferringProviderEntity {
+public class ReferringProvider {
 
 
     @Id

@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
-public class MedicalHistoryEntity {
+public class MedicalHistory {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private int id;

@@ -1,15 +1,12 @@
 package com.example.patientservice.uiResponse;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class EmergencyContactUiResponse {
+    private Long patientId = 0L;;
     private String firstName;
     private String lastName;
     private String relation;

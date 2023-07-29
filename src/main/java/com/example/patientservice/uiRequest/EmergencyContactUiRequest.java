@@ -20,4 +20,8 @@ public class EmergencyContactUiRequest {
 	private String zipCode;
 	private String country;
 	
+	
+	
+
+	
 }

@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.patientservice.entity.ReferringProviderEntity;
+import com.example.patientservice.entity.ReferringProvider;
 
 @Repository
-public interface ReferringProviderRepository extends JpaRepository<ReferringProviderEntity, String> {
+public interface ReferringProviderRepository extends JpaRepository<ReferringProvider, String> {
 	
-	Optional<ReferringProviderEntity> findByNpi(String npi);
+	Optional<ReferringProvider> findByNpi(String npi);
 }
