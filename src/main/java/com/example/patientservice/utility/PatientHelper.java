@@ -20,6 +20,8 @@ import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 
 
 public class PatientHelper {
+	
+
 	public static Patient convertPatientRequest(PatientUiRequest req) {
 		Patient p = new Patient();
 		
@@ -56,7 +58,10 @@ public class PatientHelper {
 		p.setEmpStatus(req.getEmpStatus());
 		p.setMaritalStatus(req.getMaritalStatus());
 		p.setOutStandingBalance(req.getOutStandingBalance());
-		p.setProfileImage(req.getProfileImage());
+		
+		//byte[] convertImagetoByteArray = ImageHelper.convertImagetoByteArray(req.getProfileImage());
+		byte[] compressImageByteArray = ImageHelper.compressImageByteArray(req.getProfileImage());
+		p.setProfileImage(compressImageByteArray);
 		p.setNpiId(req.getNpi());
 		
 
@@ -153,7 +158,10 @@ public class PatientHelper {
 		uiResponse.setEmpStatus(p.getEmpStatus());
 		uiResponse.setMaritalStatus(p.getMaritalStatus());
 		uiResponse.setOutStandingBalance(p.getOutStandingBalance());
-		uiResponse.setProfileImage(p.getProfileImage());
+
+	byte[] decompressedImage = ImageHelper.decompressImageFromByteArray(p.getProfileImage());
+	String profileImage = ImageHelper.convertImageToString(decompressedImage);
+		uiResponse.setProfileImage(profileImage);
 		uiResponse.setEmailPermission(p.getEmailPermission());
 		uiResponse.setVoicePermission(p.getVoicePermission());
 		uiResponse.setTextPermission(p.getTextPermission());
@@ -245,7 +253,7 @@ public class PatientHelper {
 		return referringProvider;
 	}
 	
-	public static Patient convertPatientRequestForUpdate(Patient existingPatient, PatientUiRequest req) {
+	/*public static Patient convertPatientRequestForUpdate(Patient existingPatient, PatientUiRequest req) {
         
         existingPatient.setAccountNo(req.getAccountNo());
         existingPatient.setPrefix(req.getPrefix());
@@ -305,6 +313,6 @@ public class PatientHelper {
         }
 
         return existingPatient;
-    }
+    }*/
 
 }

@@ -3,8 +3,15 @@ package com.example.patientservice.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.*;
-import lombok.Builder;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -50,7 +57,8 @@ public class Patient {
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
 	private double outStandingBalance;
-	private String profileImage;
+	
+	private byte[] profileImage;
 
 
 

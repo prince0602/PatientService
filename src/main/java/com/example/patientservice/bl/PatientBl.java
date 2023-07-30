@@ -117,14 +117,14 @@ import com.example.patientservice.utility.PatientHelper;
 			
 		}
 		
-		public boolean updatePatient(int patientId, PatientUiRequest req) {
+		/*public boolean updatePatient(int patientId, PatientUiRequest req) {
 	        Patient existingPatient = service.getPatientDetails(patientId);
 	        if (existingPatient != null) {
 	            Patient updatedPatient = PatientHelper.convertPatientRequestForUpdate(existingPatient, req);
 	            return service.updatePatient(updatedPatient);
 	        }
 	        return false;
-	    }
+	    }*/
 
 }
 

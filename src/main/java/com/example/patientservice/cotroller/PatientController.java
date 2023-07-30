@@ -44,7 +44,7 @@ public class PatientController {
 		return bl.getPatientDetails(patientId);
 	}
 
-	@Operation(summary = "This endpoint is used to update patient details")
+	/*@Operation(summary = "This endpoint is used to update patient details")
     @PostMapping("/updatePatient/{patientId}")
     public ResponseEntity<String> updatePatient(@PathVariable int patientId, @RequestBody PatientUiRequest patientUiRequest) {
         if (bl.updatePatient(patientId, patientUiRequest)) {
@@ -52,7 +52,7 @@ public class PatientController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Patient not found.");
         }
-    }
+    }*/
 
 	@GetMapping("/getAllPatients")
 	public List<PatientUIResponse> getAllPatients() {

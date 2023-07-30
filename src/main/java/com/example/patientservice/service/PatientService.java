@@ -1,17 +1,13 @@
 package com.example.patientservice.service;
 
-import com.example.patientservice.entity.Patient;
-import com.example.patientservice.repository.PatientRepo;
-
-import java.io.IOException;
 import java.util.List;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.patientservice.entity.Patient;
+import com.example.patientservice.repository.PatientRepo;
 
 @Service
 public class PatientService {
@@ -28,6 +24,7 @@ public class PatientService {
         }
     }
 
+    @Transactional()
     public Patient getPatientDetails(int patientId) {
         Patient p=patientRepo.getById(patientId);
         if(p!=null){

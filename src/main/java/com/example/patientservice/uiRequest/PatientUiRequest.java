@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class PatientUiRequest {
 	
 	private int accountNo;
-	private byte[] imageData;
+	//private String imageData;
 	
 	private String prefix;
 	private String lastName;
@@ -43,7 +43,7 @@ public class PatientUiRequest {
 	private String prescriptionHistoryConsent;
 	private String maritalStatus;
 	private double outStandingBalance;
-	private String profileImage;
+	private byte[] profileImage;
 	private List<EmergencyContactUiRequest> emergencyContacts;
 	private List<AttorneyUiRequest> attorneyUiRequests;
 		
