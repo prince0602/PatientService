@@ -158,6 +158,8 @@ public class PatientHelper {
 		uiResponse.setEmpStatus(p.getEmpStatus());
 		uiResponse.setMaritalStatus(p.getMaritalStatus());
 		uiResponse.setOutStandingBalance(p.getOutStandingBalance());
+		uiResponse.setSelfResponsibleflag(p.isSelfResponsibleFlag());		
+
 
 	byte[] decompressedImage = ImageHelper.decompressImageFromByteArray(p.getProfileImage());
 	String profileImage = ImageHelper.convertImageToString(decompressedImage);
