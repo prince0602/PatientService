@@ -205,7 +205,7 @@ public class PatientHelper {
 	}
 
 	public static List<PatientUIResponse> convertToPatientListUiResponse(List<PatientEntity> listOfPatients) {
-		// TODO Auto-generated method stub
+
 		List<PatientUIResponse> listOfPatientUiResponse= new ArrayList<PatientUIResponse>();
 		for(PatientEntity p:listOfPatients)
 		{
@@ -233,8 +233,8 @@ public class PatientHelper {
 		return null;
 	}
 
-	public static ReferringProviderEntity conertFromReferringProviderUiRequest(ReferringProviderUiRequest req) {
-		// TODO Auto-generated method stub
+	public static ReferringProviderEntity convertFromReferringProviderUiRequest(ReferringProviderUiRequest req) {
+
 		ReferringProviderEntity referringProvider = new ReferringProviderEntity();
 		referringProvider.setNpi(req.getNpi());
 		referringProvider.setNpiType(req.getNpiType());

@@ -67,5 +67,11 @@ public class PatientEntity {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<AttorneyEntity> attorneys;
 
+	//responsible party
+	private String ResponsiblePartySelected;
+	private String ResponsiblePartyRelation;
+	private String ResponsiblePartyId;
+
+
 
 }

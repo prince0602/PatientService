@@ -20,11 +20,10 @@ public class PatientService {
 
 	public Long createPatient(PatientEntity patient) {
 		PatientEntity p = patientRepo.save(patient);
-		if (p == null) {
-			return null;
-		} else {
+		if (p != null) {
 			return p.getPatientId();
 		}
+		return null;
 	}
 
 	public PatientEntity getPatientDetails(int patientId) {

@@ -41,6 +41,7 @@ public class PatientBl {
 	public Long createPatient(PatientUiRequest req) {
 
 		PatientEntity p = PatientHelper.convertPatientRequest(req);
+
 		Long patId = service.createPatient(p);
 		return patId;
 		}
@@ -63,6 +64,14 @@ public class PatientBl {
 		List<PatientUIResponse> listOfPatients = PatientHelper.convertToPatientListUiResponse(patients);
 		return listOfPatients;
 	}
+	public boolean updatePatient(int patientId, PatientUiRequest req) {
+		PatientEntity existingPatient = service.getPatientDetails(patientId);
+		if (existingPatient != null) {
+			PatientEntity updatedPatient = PatientHelper.convertPatientRequestForUpdate(existingPatient, req);
+			return service.updatePatient(updatedPatient);
+		}
+		return false;
+	}
 
 	public List<ReferringProviderUiResponse> getNpdiDetails() {
 
@@ -83,18 +92,11 @@ public class PatientBl {
 
 	public String addReferringProvider(ReferringProviderUiRequest req) {
 
-		ReferringProviderEntity referringProvider = PatientHelper.conertFromReferringProviderUiRequest(req);
+		ReferringProviderEntity referringProvider = PatientHelper.convertFromReferringProviderUiRequest(req);
 		return referringService.addReferringProvider(referringProvider);
 
 	}
 
-	public boolean updatePatient(int patientId, PatientUiRequest req) {
-		PatientEntity existingPatient = service.getPatientDetails(patientId);
-		if (existingPatient != null) {
-			PatientEntity updatedPatient = PatientHelper.convertPatientRequestForUpdate(existingPatient, req);
-			return service.updatePatient(updatedPatient);
-		}
-		return false;
-	}
+
 
 }
