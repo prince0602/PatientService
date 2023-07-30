@@ -92,14 +92,16 @@ import com.example.patientservice.utility.PatientHelper;
 			// TODO Auto-generated method stub
 		//	restTemplate.get
 			
-			List<ReferringProviderUiResponse> readRefferingProviderJsonFile = new ArrayList<ReferringProviderUiResponse>();
-			try {
-				readRefferingProviderJsonFile= jsonService.readRefferingProviderJsonFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			List<ReferringProviderUiResponse> referringProviderList = new ArrayList<ReferringProviderUiResponse>();
+			
+			List<ReferringProvider> listOfRefferal= referringService.getAllReferral();
+			for(ReferringProvider referral:listOfRefferal)
+			{
+				ReferringProviderUiResponse convertToReferringProviderUiResponse = PatientHelper.convertToReferringProviderUiResponse(referral);
+				referringProviderList.add(convertToReferringProviderUiResponse);
 			}
-			return readRefferingProviderJsonFile;
+			
+			return referringProviderList;
 		}
 
 		public String searchProvider(String npiNumber) {

@@ -146,7 +146,7 @@ public class PatientHelper {
 		uiResponse.setSuffix(p.getSuffix());
 		uiResponse.setReleaseOfInfo(p.getReleaseOfInfo());
 		uiResponse.setState(p.getState());
-		
+		uiResponse.setSelfResponsibleflag(p.isSelfResponsibleFlag());		
 		uiResponse.setDateOfBirth(p.getDateOfBirth());
 		uiResponse.setPrimaryPhoneNumber(p.getPrimaryPhoneNumber());
 		uiResponse.setSecondaryPhoneNumber(p.getSecondaryPhoneNumber());

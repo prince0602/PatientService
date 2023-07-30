@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.patientservice.entity.Patient;
+import com.example.patientservice.entity.ReferringProvider;
 import com.example.patientservice.repository.PatientRepo;
 
 @Service
@@ -52,4 +53,5 @@ public class PatientService {
 //        patientRepo.save(patient);
 //
 //    }
+
 }
