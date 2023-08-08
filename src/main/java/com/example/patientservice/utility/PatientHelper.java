@@ -57,6 +57,11 @@ public class PatientHelper {
 		p.setOutStandingBalance(req.getOutStandingBalance());
 		p.setProfileImage(req.getProfileImage());
 		p.setNpiId(req.getNpi());
+		p.setSelfResponsibleFlag(req.isSelfResponsibleFlag());
+		p.setResponsiblePatientId(req.getResponsiblePatientId());
+		p.setResponsibleGuarantorId(req.getResponsibleGuarantorId());
+		p.setResponsiblePartyRelation(req.getResponsiblePartyRelation());
+		p.setListOfAttorneys(req.getListOfAttorneys());
 		
 
 
@@ -86,25 +91,6 @@ public class PatientHelper {
 		p.setEmergencyContact(emergencyContacts);
 
 
-		List<AttorneyEntity> attorneys=new ArrayList<AttorneyEntity>();
-		List<AttorneyUiRequest> attorneyUiRequests=req.getAttorneyUiRequests();
-		if(attorneyUiRequests!=null){
-			for(AttorneyUiRequest attorneyUiRequest:attorneyUiRequests){
-				AttorneyEntity attorney=new AttorneyEntity();
-				attorney.setAttorneyId(attorneyUiRequest.getAttorneyId());
-				attorney.setCity(attorneyUiRequest.getCity());
-				attorney.setCountry(attorneyUiRequest.getCountry());
-				attorney.setZipCode(attorneyUiRequest.getZipCode());
-				attorney.setState(attorneyUiRequest.getState());
-				attorney.setFirstName(attorneyUiRequest.getFirstName());
-				attorney.setLastName(attorneyUiRequest.getLastName());
-				attorney.setOfficeAdd(attorneyUiRequest.getOfficeAdd());
-				attorney.setPhone(attorneyUiRequest.getPhone());
-				attorney.setNotes(attorneyUiRequest.getNotes());
-				attorneys.add(attorney);
-			}
-		}
-		p.setAttorneys(attorneys);
 		
 		
 		
@@ -157,6 +143,11 @@ public class PatientHelper {
 		uiResponse.setVoicePermission(p.getVoicePermission());
 		uiResponse.setTextPermission(p.getTextPermission());
 		uiResponse.setPreferredModeOfCommunication(p.getPreferredModeOfCommunication());
+		uiResponse.setResponsiblePatientId(p.getResponsiblePatientId());
+		uiResponse.setResponsibleGuarantorId(p.getResponsibleGuarantorId());
+		uiResponse.setResponsiblePartyRelation(p.getResponsiblePartyRelation());
+		uiResponse.setSelfResponsibleFlag(p.isSelfResponsibleFlag());
+		uiResponse.setListOfAttorneys(p.getListOfAttorneys());
 
 
 
@@ -182,24 +173,6 @@ public class PatientHelper {
 
 		}
 		uiResponse.setEmergencyContacts(emergencyContactUiResponse);
-
-				List<AttorneyEntity> attorneyList=p.getAttorneys();
-		List<AttorneyUiResponse> attorneyUiResponses=new ArrayList<AttorneyUiResponse>();
-		for(AttorneyEntity attorney:attorneyList){
-			AttorneyUiResponse attorneyUiResponse=new AttorneyUiResponse();
-			attorneyUiResponse.setCity(attorney.getCity());
-			attorneyUiResponse.setState(attorney.getState());
-			attorneyUiResponse.setZipCode(attorney.getZipCode());
-			attorneyUiResponse.setPhone(attorney.getPhone());
-			attorneyUiResponse.setFirstName(attorney.getFirstName());
-			attorneyUiResponse.setLastName(attorney.getLastName());
-			attorneyUiResponse.setNotes(attorney.getNotes());
-			attorneyUiResponse.setOfficeAdd(attorney.getOfficeAdd());
-			attorneyUiResponse.setCountry(attorney.getCountry());
-			attorneyUiResponses.add(attorneyUiResponse);
-		}
-		uiResponse.setAttorney(attorneyUiResponses);
-		
 
 		return uiResponse;
 	}

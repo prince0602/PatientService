@@ -48,8 +48,11 @@ public class PatientUIResponse {
     private String textPermission;
     private String voicePermission;
     private String preferredModeOfCommunication;
-    private boolean selfResponsibleflag;
+    private boolean selfResponsibleFlag;
+    private Long ResponsiblePatientId;
+    private String ResponsibleGuarantorId;
+    private String ResponsiblePartyRelation;
 
-    private List<AttorneyUiResponse> attorney=new ArrayList<AttorneyUiResponse>();
+   private String listOfAttorneys;
 
 }

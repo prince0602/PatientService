@@ -1,13 +1,9 @@
 package com.example.patientservice.repository;
 
-import com.example.patientservice.entity.GuarantorEntity;
+import com.example.patientservice.entity.AttorneyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface GuarantorRepository extends JpaRepository<GuarantorEntity,Long> {
-
-
+public interface AttorneyRepository extends JpaRepository<AttorneyEntity,Long> {
 }

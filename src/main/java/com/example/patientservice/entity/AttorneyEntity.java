@@ -22,7 +22,5 @@ public class AttorneyEntity {
     private String country;
     private String notes;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-    private PatientEntity patient;
-
+  
 }

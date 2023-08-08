@@ -52,10 +52,9 @@ public class PatientEntity {
 	private double outStandingBalance;
 	private String profileImage;
 
-
+	private String listOfAttorneys;
 
 	@Column(nullable = false, columnDefinition = "boolean default true")
-	private boolean selfResponsibleFlag;
 	private String emailPermission;
 	private String textPermission;
 	private String voicePermission;
@@ -64,13 +63,14 @@ public class PatientEntity {
 	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
 	private List<EmergencyContactEntity> emergencyContact;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
-	private List<AttorneyEntity> attorneys;
+
+
 
 	//responsible party
-	private String ResponsiblePartySelected;
+	private boolean selfResponsibleFlag;
+	private Long ResponsiblePatientId;
+	private String ResponsibleGuarantorId;
 	private String ResponsiblePartyRelation;
-	private String ResponsiblePartyId;
 
 
 

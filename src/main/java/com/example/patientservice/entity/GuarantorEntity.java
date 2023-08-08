@@ -1,7 +1,6 @@
 package com.example.patientservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -11,11 +10,14 @@ import java.time.LocalDate;
 public class GuarantorEntity {
 
     @Id
-    private String guarantorRecordNumber;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "guarantorId")
+    private Long guarantorId;
     private String name;
     private String firstName;
     private String type;
     private String phone;
     private String gender;
     private LocalDate dateOfBirth;
+    private String guarantorRecordNumber;
 }

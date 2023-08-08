@@ -13,15 +13,16 @@ public class GuarantorService {
     @Autowired
     GuarantorRepository guarantorRepo;
 
-    public String createGuarantor(GuarantorEntity guarantor){
+    public Long createGuarantor(GuarantorEntity guarantor){
         GuarantorEntity g=guarantorRepo.save(guarantor);
         if(g!=null){
-            return g.getGuarantorRecordNumber();
+            return g.getGuarantorId();
         }
         return null;
     }
-    public GuarantorEntity getGuarantorById(String guarantorRecordNumber){
-        return guarantorRepo.findByGuarantorRecordNumber(guarantorRecordNumber).orElse(null);
+    public GuarantorEntity getGuarantorById(Long guarantorId){
+        GuarantorEntity g=guarantorRepo.getById(guarantorId);
+        return g;
     }
 
     public List<GuarantorEntity> getAllGuarantor(){

@@ -2,10 +2,8 @@ package com.example.patientservice.cotroller;
 
 
 import com.example.patientservice.bl.GuarantorBl;
-import com.example.patientservice.bl.PatientBl;
 import com.example.patientservice.uiRequest.GuarantorUiRequest;
 import com.example.patientservice.uiResponse.GuarantorUiResponse;
-import com.example.patientservice.uiResponse.PatientUIResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +18,12 @@ public class GuarantorController {
     GuarantorBl bl;
 
     @PostMapping("/createGuarantor")
-    public String createGuarantor(@RequestBody GuarantorUiRequest guarantorUiRequest){
+    public Long createGuarantor(@RequestBody GuarantorUiRequest guarantorUiRequest){
     return bl.createGuarantor(guarantorUiRequest);
     }
-    @GetMapping("/getGuarantor/{guarantorRecordNumber}")
-    public GuarantorUiResponse getGuarantor(@PathVariable String guarantorRecordNumber){
-        return  bl.getGuarantor(guarantorRecordNumber);
+    @GetMapping("/getGuarantor/{guarantorId}")
+    public GuarantorUiResponse getGuarantor(@PathVariable Long guarantorId){
+        return  bl.getGuarantor(guarantorId);
     }
 
     @GetMapping("/getAllGuarantor")

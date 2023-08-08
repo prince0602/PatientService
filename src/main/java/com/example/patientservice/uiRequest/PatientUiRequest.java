@@ -44,18 +44,23 @@ public class PatientUiRequest {
 	private String maritalStatus;
 	private double outStandingBalance;
 	private String profileImage;
+	private String listOfAttorneys;
 	private List<EmergencyContactUiRequest> emergencyContacts;
-	private List<AttorneyUiRequest> attorneyUiRequests;
+
 		
 	private String npi;
 
-	private boolean selfResponsibleFlag;
 	
 	private String emailPermission;
 	private String textPermission;
 	private String voicePermission;
 	private String preferredModeOfCommunication;
 	private Long PatientId;
+
+	private boolean selfResponsibleFlag;
+	private Long ResponsiblePatientId;
+	private String ResponsibleGuarantorId;
+	private String ResponsiblePartyRelation;
 
 
 }

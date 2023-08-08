@@ -12,7 +12,7 @@ import com.example.patientservice.uiResponse.ReferringProviderUiResponse;
 @RestController
 @RequestMapping("/npi")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
-public class RefferalController {
+public class ReferralController {
 	
 	@Autowired
 	PatientBl bl;

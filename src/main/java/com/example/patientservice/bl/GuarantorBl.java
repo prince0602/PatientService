@@ -16,13 +16,13 @@ public class GuarantorBl {
     @Autowired
     GuarantorService guarantorService;
 
-    public String createGuarantor(GuarantorUiRequest request){
+    public Long createGuarantor(GuarantorUiRequest request){
         GuarantorEntity g= GuarantorHelper.convertFromGuarantorUiRequest(request);
-        String guarantorRecordNumber=guarantorService.createGuarantor(g);
-        return guarantorRecordNumber;
+        Long guarantorId=guarantorService.createGuarantor(g);
+        return guarantorId;
     }
-    public GuarantorUiResponse getGuarantor(String guarantorRecordNumber){
-        GuarantorEntity g=guarantorService.getGuarantorById(guarantorRecordNumber);
+    public GuarantorUiResponse getGuarantor(Long guarantorId){
+        GuarantorEntity g=guarantorService.getGuarantorById(guarantorId);
         GuarantorUiResponse guarantorUiResponse=GuarantorHelper.convertToGuarantorUiResponse(g);
         return guarantorUiResponse;
 
@@ -32,5 +32,8 @@ public class GuarantorBl {
 
         List<GuarantorEntity> guarantors= guarantorService.getAllGuarantor();
         List<GuarantorUiResponse> listOfGuarantors=GuarantorHelper.convertToGuarantorListUiResponse(guarantors);
+        return listOfGuarantors;
     }
 }
+
+

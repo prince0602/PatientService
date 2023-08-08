@@ -4,16 +4,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.patientservice.entity.AttorneyEntity;
+import com.example.patientservice.service.*;
+import com.example.patientservice.uiResponse.AttorneyUiResponse;
+import com.example.patientservice.utility.AttorneyHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.patientservice.entity.PatientEntity;
 import com.example.patientservice.entity.ReferringProviderEntity;
-import com.example.patientservice.service.ExternalService;
-import com.example.patientservice.service.PatientService;
-import com.example.patientservice.service.ReadJsonFileService;
-import com.example.patientservice.service.ReferringProviderService;
 import com.example.patientservice.uiRequest.PatientUiRequest;
 import com.example.patientservice.uiRequest.ReferringProviderUiRequest;
 import com.example.patientservice.uiResponse.PatientUIResponse;
@@ -38,6 +38,11 @@ public class PatientBl {
 	@Autowired
 	ReferringProviderService referringService;
 
+	@Autowired
+	AttorneyService attorneyService;
+
+
+
 	public Long createPatient(PatientUiRequest req) {
 
 		PatientEntity p = PatientHelper.convertPatientRequest(req);
@@ -55,6 +60,17 @@ public class PatientBl {
 		ReferringProviderUiResponse referringProviderUiResponse = PatientHelper
 				.convertToReferringProviderUiResponse(referringProvider);
 		response.setReferringProvider(referringProviderUiResponse);
+
+		//attorney
+		String listOfAttorneys=response.getListOfAttorneys();
+		String[] attorneys=listOfAttorneys.split("\\|");
+		List<AttorneyUiResponse> attorneyUiResponseList=new ArrayList<AttorneyUiResponse>();
+		for(String attorneyId:attorneys){
+			AttorneyEntity attorney1=attorneyService.getAttorney(Long.parseLong(attorneyId));
+			AttorneyUiResponse attorneyUiResponse=AttorneyHelper.convertToAttorneyUiResponse(attorney1);
+			attorneyUiResponseList.add(attorneyUiResponse);
+		}
+	response.setListOfAttorneys(attorneyUiResponseList.toString());
 		return response;
 	}
 
